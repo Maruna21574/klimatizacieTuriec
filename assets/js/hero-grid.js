@@ -31,7 +31,7 @@
       dpr = Math.min(window.devicePixelRatio || 1, 2);
       var r = canvas.getBoundingClientRect();
       W = r.width; H = r.height;
-      if (!W || !H) return;
+      if (!W || !H) { stop(); return; }
       canvas.width = Math.round(W * dpr);
       canvas.height = Math.round(H * dpr);
       ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
@@ -39,6 +39,7 @@
       rows = Math.ceil(H / CELL);
       build();
       draw(0);
+      start();
     }
 
     function build() {
@@ -203,7 +204,7 @@
     }
 
     function start() {
-      if (running || reduce) return;
+      if (running || reduce || !W || !H) return;
       running = true;
       last = performance.now();
       rafId = requestAnimationFrame(frame);
@@ -221,7 +222,6 @@
 
     resize();
     window.addEventListener('resize', resize);
-    if (!reduce) start();
   }
 
   for (var i = 0; i < canvases.length; i++) initInstance(canvases[i]);
