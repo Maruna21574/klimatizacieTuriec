@@ -1,0 +1,94 @@
+// =============================================
+// Klíma Turiec — design tokens
+// =============================================
+
+// Colors — blue primary, warm sunset-orange as high-contrast accent
+$blue-50:  #eef6ff;
+$blue-100: #dbeafe;
+$blue-200: #b6d9ff;
+$blue-300: #86c0fd;
+$blue-400: #4aa2f5;
+$blue-500: #2483e0;
+$blue-600: #1668c4;
+$blue-700: #124f9c;
+$blue-800: #0e3b78;
+$blue-900: #0a2650;
+$navy:     #071c3f;
+
+$white: #ffffff;
+$gray-50:  #f5f8fc;
+$gray-100: #edf1f7;
+$gray-200: #dfe5ee;
+$gray-300: #c7d0de;
+$gray-500: #7c88a0;
+$gray-600: #57647c;
+$gray-700: #37425a;
+$gray-900: #131b2c;
+
+// Accent — sunset orange, chosen to sit opposite blue on the wheel and pop hard
+$accent-100: #ffe4d6;
+$accent-300: #ff9c6b;
+$accent:     #ff5f2e;
+$accent-600: #e8451a;
+$accent-700: #c53512;
+
+$color-primary: $blue-600;
+$color-primary-dark: $blue-900;
+$color-text: $gray-700;
+$color-heading: $navy;
+$color-bg: $white;
+$color-bg-alt: $gray-50;
+
+// Gradients
+$gradient-brand: linear-gradient(135deg, $blue-400 0%, $blue-700 55%, $navy 100%);
+$gradient-brand-soft: linear-gradient(135deg, $blue-50 0%, $blue-100 100%);
+$gradient-accent: linear-gradient(135deg, $accent 0%, $accent-600 100%);
+
+// Typography
+$font-heading: 'Poppins', 'Segoe UI', sans-serif;
+$font-body: 'Inter', 'Segoe UI', sans-serif;
+
+// Spacing scale
+$space-1: 0.5rem;
+$space-2: 1rem;
+$space-3: 1.5rem;
+$space-4: 2rem;
+$space-5: 3rem;
+$space-6: 4.5rem;
+$space-7: 6rem;
+
+// Layout
+$container-max: 1200px;
+$radius-sm: 8px;
+$radius-md: 14px;
+$radius-lg: 24px;
+$radius-pill: 999px;
+
+// Shadows
+$shadow-sm: 0 2px 8px rgba(10, 38, 80, 0.07);
+$shadow-md: 0 10px 30px rgba(10, 38, 80, 0.10);
+$shadow-lg: 0 24px 55px rgba(10, 38, 80, 0.18);
+$shadow-accent: 0 14px 30px rgba(255, 95, 46, 0.32);
+
+// Transitions
+$ease: cubic-bezier(0.4, 0, 0.2, 1);
+$t-fast: 0.2s $ease;
+$t-med: 0.35s $ease;
+
+// Breakpoints
+$bp-sm: 576px;
+$bp-md: 768px;
+$bp-lg: 992px;
+$bp-xl: 1200px;
+
+@mixin bp-up($width) {
+  @media (min-width: $width) {
+    @content;
+  }
+}
+
+@mixin bp-down($width) {
+  @media (max-width: ($width - 1px)) {
+    @content;
+  }
+}

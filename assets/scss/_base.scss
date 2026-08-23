@@ -1,0 +1,139 @@
+*, *::before, *::after { box-sizing: border-box; }
+
+html {
+  scroll-behavior: smooth;
+  -webkit-text-size-adjust: 100%;
+}
+
+html.js .reveal {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity .7s $ease, transform .7s $ease;
+
+  &.is-visible {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+body {
+  margin: 0;
+  font-family: $font-body;
+  color: $color-text;
+  background: $color-bg;
+  line-height: 1.6;
+  font-size: 16px;
+  -webkit-font-smoothing: antialiased;
+}
+
+h1, h2, h3, h4 {
+  font-family: $font-heading;
+  color: $color-heading;
+  line-height: 1.18;
+  margin: 0 0 $space-2;
+  font-weight: 700;
+}
+
+h1 { font-size: clamp(2.1rem, 4.2vw, 3.4rem); font-weight: 800; }
+h2 { font-size: clamp(1.7rem, 2.8vw, 2.4rem); }
+h3 { font-size: 1.25rem; }
+h4 { font-size: 1.05rem; }
+
+p { margin: 0 0 $space-2; }
+
+a {
+  color: $color-primary;
+  text-decoration: none;
+  transition: color $t-fast;
+
+  &:hover { color: $accent; }
+}
+
+img { max-width: 100%; display: block; height: auto; }
+
+ul { margin: 0; padding: 0; list-style: none; }
+
+.container {
+  max-width: $container-max;
+  margin-inline: auto;
+  padding-inline: $space-3;
+
+  @include bp-up($bp-md) { padding-inline: $space-4; }
+}
+
+.skip-link {
+  position: absolute;
+  left: -999px;
+  top: 0;
+  background: $navy;
+  color: $white;
+  padding: $space-2 $space-3;
+  z-index: 1000;
+  border-radius: 0 0 $radius-sm 0;
+
+  &:focus { left: 0; }
+}
+
+.section {
+  padding-block: $space-6;
+
+  &--alt { background: $color-bg-alt; }
+  &--tight { padding-block: $space-5; }
+}
+
+.section__head {
+  max-width: 640px;
+  margin-bottom: $space-5;
+
+  &--split {
+    max-width: none;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-end;
+    justify-content: space-between;
+    gap: $space-3;
+
+    > div { max-width: 560px; }
+  }
+
+  p { color: $gray-600; margin-bottom: 0; }
+}
+
+.section__kicker {
+  display: inline-flex;
+  align-items: center;
+  gap: .4rem;
+  font-family: $font-heading;
+  font-weight: 700;
+  font-size: .8rem;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  color: $accent-600;
+  margin-bottom: $space-1;
+}
+
+.icon { flex-shrink: 0; }
+
+.back-to-top {
+  position: fixed;
+  right: $space-3;
+  bottom: $space-3;
+  width: 46px;
+  height: 46px;
+  border-radius: 50%;
+  background: $navy;
+  color: $white;
+  border: none;
+  display: grid;
+  place-items: center;
+  cursor: pointer;
+  box-shadow: $shadow-md;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(10px);
+  transition: all $t-fast;
+  z-index: 60;
+
+  &.is-visible { opacity: 1; visibility: visible; transform: none; }
+  &:hover { background: $accent; }
+}

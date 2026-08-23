@@ -1,0 +1,257 @@
+// --- O nás -------------------------------------------------------
+.about-grid {
+  display: grid;
+  gap: $space-4;
+  align-items: center;
+
+  @include bp-up($bp-lg) { grid-template-columns: 1.1fr .9fr; gap: $space-6; }
+}
+
+.about-grid__badges {
+  display: flex;
+  flex-direction: column;
+  gap: .7rem;
+  margin-top: $space-3;
+}
+
+.about-badge {
+  display: flex;
+  align-items: center;
+  gap: .6rem;
+  font-size: .92rem;
+  color: $gray-700;
+
+  .icon { color: $accent; width: 20px; height: 20px; flex-shrink: 0; }
+}
+
+.about-photo {
+  border-radius: $radius-lg;
+  overflow: hidden;
+  box-shadow: $shadow-lg;
+  aspect-ratio: 4 / 5;
+
+  img { width: 100%; height: 100%; object-fit: cover; }
+}
+
+.values-grid {
+  display: grid;
+  gap: $space-3;
+  grid-template-columns: 1fr;
+
+  @include bp-up($bp-sm) { grid-template-columns: repeat(2, 1fr); }
+  @include bp-up($bp-lg) { grid-template-columns: repeat(4, 1fr); }
+}
+
+.value-card {
+  background: $white;
+  border-radius: $radius-lg;
+  padding: $space-3;
+  border: 1px solid $gray-100;
+  box-shadow: $shadow-sm;
+
+  &__icon {
+    display: inline-grid;
+    place-items: center;
+    width: 48px; height: 48px;
+    border-radius: 50%;
+    background: $accent-100;
+    color: $accent-600;
+    margin-bottom: $space-2;
+  }
+
+  p { font-size: .9rem; color: $gray-600; margin: 0; }
+}
+
+.towns-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: .7rem;
+}
+
+.towns-grid__item {
+  display: inline-flex;
+  align-items: center;
+  gap: .5rem;
+  background: $white;
+  border: 1px solid $blue-100;
+  color: $blue-700;
+  font-weight: 600;
+  font-family: $font-heading;
+  font-size: .9rem;
+  padding: .6rem 1.1rem;
+  border-radius: $radius-pill;
+
+  .icon { width: 16px; height: 16px; }
+
+  &--more { background: $gradient-brand-soft; color: $blue-800; }
+}
+
+// --- Služby (service detail blocks) --------------------------------
+.service-detail {
+  display: grid;
+  gap: $space-4;
+  align-items: center;
+
+  @include bp-up($bp-lg) { grid-template-columns: 1fr 1fr; gap: $space-6; }
+
+  &--reverse {
+    @include bp-up($bp-lg) {
+      .service-detail__media { order: 2; }
+      .service-detail__text { order: 1; }
+    }
+  }
+}
+
+.service-detail__icon {
+  display: inline-grid;
+  place-items: center;
+  width: 56px; height: 56px;
+  border-radius: $radius-md;
+  background: $gradient-brand-soft;
+  color: $blue-700;
+  margin-bottom: $space-2;
+
+  .icon { width: 28px; height: 28px; }
+}
+
+.service-detail__media {
+  border-radius: $radius-lg;
+  overflow: hidden;
+  box-shadow: $shadow-lg;
+  aspect-ratio: 4 / 3;
+
+  img { width: 100%; height: 100%; object-fit: cover; }
+}
+
+.check-list {
+  display: flex;
+  flex-direction: column;
+  gap: .55rem;
+  margin-top: $space-2;
+
+  li {
+    display: flex;
+    align-items: center;
+    gap: .55rem;
+    font-size: .94rem;
+    color: $gray-700;
+  }
+
+  .icon { color: $accent; width: 18px; height: 18px; flex-shrink: 0; }
+}
+
+// --- Kalkulačka výkonu ------------------------------------------------
+.calc-grid {
+  display: grid;
+  gap: $space-4;
+  align-items: start;
+
+  @include bp-up($bp-lg) { grid-template-columns: 1fr 1fr; gap: $space-5; }
+}
+
+.calc-card {
+  background: $white;
+  border: 1px solid $gray-100;
+  border-radius: $radius-lg;
+  padding: $space-4;
+  box-shadow: $shadow-sm;
+  display: flex;
+  flex-direction: column;
+  gap: $space-3;
+}
+
+.calc-result {
+  background: $gradient-brand;
+  color: $white;
+  border-radius: $radius-lg;
+  padding: $space-4;
+  box-shadow: $shadow-lg;
+
+  .section__kicker { color: $accent-300; }
+
+  p { color: rgba(255, 255, 255, .82); font-size: .92rem; margin-bottom: 0; }
+
+  .check-list {
+    li { color: rgba(255, 255, 255, .88); }
+    .icon { color: $accent-300; }
+  }
+
+  .hero__actions { margin-top: $space-3; margin-bottom: 0; }
+}
+
+.calc-price {
+  background: rgba(255, 255, 255, .1);
+  border: 1px solid rgba(255, 255, 255, .18);
+  border-radius: $radius-md;
+  padding: $space-2 $space-3;
+  margin: $space-2 0;
+
+  strong {
+    display: block;
+    font-family: $font-heading;
+    font-weight: 800;
+    font-size: 1.5rem;
+  }
+}
+
+.calc-price__label {
+  display: block;
+  font-size: .8rem;
+  color: rgba(255, 255, 255, .7);
+  margin-bottom: .15rem;
+}
+
+.calc-price__note {
+  display: block;
+  font-size: .78rem;
+  color: rgba(255, 255, 255, .65);
+  margin-top: .2rem;
+}
+
+.calc-disclaimer {
+  font-size: .76rem;
+  color: rgba(255, 255, 255, .6);
+  margin-top: $space-3;
+}
+
+.calc-result__value {
+  display: flex;
+  align-items: baseline;
+  gap: .6rem;
+  margin: $space-1 0 .5rem;
+  flex-wrap: wrap;
+
+  strong {
+    font-family: $font-heading;
+    font-weight: 800;
+    font-size: 2.6rem;
+    line-height: 1;
+  }
+
+  span { font-size: .92rem; color: rgba(255, 255, 255, .72); }
+}
+
+// --- 404 -------------------------------------------------------
+.not-found__inner {
+  text-align: center;
+  max-width: 560px;
+  margin-inline: auto;
+}
+
+.not-found__code {
+  display: block;
+  font-family: $font-heading;
+  font-weight: 800;
+  font-size: clamp(3.5rem, 10vw, 6rem);
+  background: $gradient-accent;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  line-height: 1;
+  margin-bottom: $space-2;
+}
+
+.not-found .hero__actions {
+  justify-content: center;
+  margin-top: $space-3;
+}
