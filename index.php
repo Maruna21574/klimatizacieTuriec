@@ -14,7 +14,7 @@ require_once __DIR__ . '/includes/header.php';
     </div>
     <div class="container hero__inner">
         <div class="hero__content reveal">
-            <h1>Príjemný chlad vo vašom&nbsp;dome, <span>bez starostí okolo montáže</span></h1>
+            <h1>Príjemný chlad vo vašom&nbsp;dome, <span>presne podľa vašich predstáv</span></h1>
             <p class="hero__lead">Montujeme, servisujeme a čistíme klimatizácie všetkých značiek. Od obhliadky po spustenie zvládneme montáž rodinného domu alebo bytu spravidla do pár dní.</p>
             <div class="hero__actions">
                 <a href="kontakt.php" class="btn btn--accent btn--lg"><?= icon('arrow-right') ?> Nezáväzná cenová ponuka</a>
