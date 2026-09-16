@@ -1,0 +1,103 @@
+// --- Cookie súhlas ----------------------------------------------------
+.cookie-banner {
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 200;
+  padding: $space-2;
+  transform: translateY(110%);
+  opacity: 0;
+  transition: transform $t-med, opacity $t-med;
+
+  &.is-visible { transform: translateY(0); opacity: 1; }
+
+  &[hidden] { display: block; } // umožní prechodovú animáciu pred skutočným skrytím
+}
+
+// keď je otvorené mobilné menu, cookie lišta by ho prekrývala - radšej ju dočasne skryjeme
+.mobile-nav.is-open ~ .cookie-banner { display: none; }
+
+// Malé okrúhle tlačidlo, ktoré ostane natrvalo viditeľné aj po odsúhlasení/odmietnutí cookies,
+// aby si používateľ mohol nastavenia cookies kedykoľvek znova otvoriť (dole vľavo, back-to-top je vpravo).
+.cookie-fab {
+  position: fixed;
+  left: $space-3;
+  bottom: $space-3;
+  width: 46px;
+  height: 46px;
+  border-radius: 50%;
+  background: $navy;
+  color: $white;
+  border: none;
+  display: grid;
+  place-items: center;
+  cursor: pointer;
+  box-shadow: $shadow-md;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(10px);
+  transition: all $t-fast;
+  z-index: 60;
+
+  &.is-visible { opacity: 1; visibility: visible; transform: none; }
+  &:hover { background: $accent; }
+}
+
+.mobile-nav.is-open ~ .cookie-fab { display: none; }
+
+.cookie-banner__inner {
+  max-width: 960px;
+  margin-inline: auto;
+  background: $navy;
+  color: rgba(255, 255, 255, .85);
+  border-radius: $radius-md;
+  box-shadow: $shadow-lg;
+  padding: $space-3;
+  display: flex;
+  flex-direction: column;
+  gap: $space-2;
+
+  @include bp-up($bp-md) {
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    gap: $space-3;
+  }
+}
+
+.cookie-banner__text {
+  strong {
+    display: block;
+    color: $white;
+    font-family: $font-heading;
+    margin-bottom: .3rem;
+  }
+
+  p { margin: 0; font-size: .88rem; line-height: 1.5; }
+}
+
+.cookie-banner__actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: .6rem;
+  flex-shrink: 0;
+}
+
+.cookie-banner__link {
+  color: rgba(255, 255, 255, .78);
+  font-size: .85rem;
+  text-decoration: underline;
+  white-space: nowrap;
+}
+
+.cookie-settings-link {
+  color: inherit;
+  text-decoration: underline;
+  cursor: pointer;
+  background: none;
+  border: none;
+  font: inherit;
+  padding: 0;
+}

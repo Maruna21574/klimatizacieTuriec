@@ -1,0 +1,174 @@
+:root {
+    --admin-primary: #0a2650;
+    --admin-accent: #ff7a00;
+    --admin-bg: #f4f6f9;
+    --admin-card: #ffffff;
+    --admin-border: #e1e6ee;
+    --admin-text: #1c2733;
+    --admin-muted: #667080;
+    --admin-danger: #c0392b;
+    --admin-success: #1e8e5a;
+}
+
+* { box-sizing: border-box; }
+
+body {
+    margin: 0;
+    font-family: 'Segoe UI', Inter, system-ui, sans-serif;
+    background: var(--admin-bg);
+    color: var(--admin-text);
+    font-size: 15px;
+    line-height: 1.5;
+}
+
+a { color: var(--admin-primary); }
+
+.admin-topbar {
+    background: var(--admin-primary);
+    color: #fff;
+    display: flex;
+    align-items: center;
+    gap: 24px;
+    padding: 12px 24px;
+    flex-wrap: wrap;
+}
+
+.admin-topbar__brand { font-weight: 700; font-size: 16px; white-space: nowrap; }
+.admin-topbar__brand span { font-weight: 400; opacity: .7; }
+
+.admin-topbar__nav { display: flex; gap: 4px; flex-wrap: wrap; flex: 1; }
+.admin-topbar__nav a {
+    color: #cfe0f5;
+    text-decoration: none;
+    padding: 6px 12px;
+    border-radius: 6px;
+    font-size: 14px;
+}
+.admin-topbar__nav a:hover { background: rgba(255,255,255,.08); color: #fff; }
+.admin-topbar__nav a.is-active { background: var(--admin-accent); color: #fff; font-weight: 600; }
+
+.admin-topbar__user { display: flex; align-items: center; gap: 12px; font-size: 13px; white-space: nowrap; }
+.admin-topbar__user span { opacity: .85; }
+.admin-topbar__user a { color: #cfe0f5; text-decoration: none; }
+.admin-topbar__user a:hover { text-decoration: underline; }
+
+.admin-container { max-width: 980px; margin: 0 auto; padding: 28px 20px 60px; }
+
+h1 { font-size: 22px; margin: 0 0 20px; color: var(--admin-primary); }
+h2 { font-size: 17px; margin: 32px 0 12px; color: var(--admin-primary); }
+h2:first-child { margin-top: 0; }
+
+.admin-alert {
+    padding: 12px 16px;
+    border-radius: 8px;
+    margin-bottom: 20px;
+    font-size: 14px;
+}
+.admin-alert--success { background: #e5f6ee; color: var(--admin-success); border: 1px solid #b9e6cf; }
+.admin-alert--error { background: #fbeae8; color: var(--admin-danger); border: 1px solid #f2c1ba; }
+
+.admin-card {
+    background: var(--admin-card);
+    border: 1px solid var(--admin-border);
+    border-radius: 10px;
+    padding: 20px;
+    margin-bottom: 20px;
+}
+
+.admin-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 16px; margin-bottom: 24px; }
+.admin-tile {
+    display: block;
+    background: var(--admin-card);
+    border: 1px solid var(--admin-border);
+    border-radius: 10px;
+    padding: 18px;
+    text-decoration: none;
+    color: var(--admin-text);
+}
+.admin-tile:hover { border-color: var(--admin-primary); }
+.admin-tile strong { display: block; color: var(--admin-primary); font-size: 15px; margin-bottom: 4px; }
+.admin-tile span { color: var(--admin-muted); font-size: 13px; }
+
+label { display: block; font-weight: 600; font-size: 13px; margin-bottom: 6px; color: var(--admin-text); }
+.admin-field { margin-bottom: 16px; }
+.admin-field small { display: block; color: var(--admin-muted); font-weight: 400; margin-top: 4px; }
+
+input[type="text"], input[type="email"], input[type="tel"], input[type="number"], input[type="password"], input[type="url"], input[type="file"], textarea, select {
+    width: 100%;
+    padding: 9px 11px;
+    border: 1px solid var(--admin-border);
+    border-radius: 7px;
+    font-size: 14px;
+    font-family: inherit;
+    background: #fff;
+    color: var(--admin-text);
+}
+textarea { resize: vertical; min-height: 70px; }
+input:focus, textarea:focus, select:focus { outline: 2px solid var(--admin-primary); outline-offset: 1px; }
+
+.btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 9px 18px;
+    border-radius: 7px;
+    border: none;
+    background: var(--admin-primary);
+    color: #fff;
+    font-weight: 600;
+    font-size: 14px;
+    cursor: pointer;
+    text-decoration: none;
+}
+.btn:hover { background: #0d2f61; }
+.btn--accent { background: var(--admin-accent); }
+.btn--accent:hover { background: #e56d00; }
+.btn--danger { background: var(--admin-danger); }
+.btn--danger:hover { background: #a5301f; }
+.btn--outline { background: transparent; color: var(--admin-primary); border: 1px solid var(--admin-border); }
+.btn--outline:hover { border-color: var(--admin-primary); }
+.btn--sm { padding: 6px 12px; font-size: 13px; }
+
+.admin-group-label {
+    text-transform: uppercase;
+    letter-spacing: .04em;
+    font-size: 12px;
+    color: var(--admin-muted);
+    margin: 28px 0 10px;
+    font-weight: 700;
+}
+.admin-group-label:first-of-type { margin-top: 4px; }
+
+.admin-toolbar { display: flex; justify-content: flex-end; gap: 10px; margin-top: 20px; }
+
+table.admin-table { width: 100%; border-collapse: collapse; margin-bottom: 20px; }
+table.admin-table th, table.admin-table td { text-align: left; padding: 10px 12px; border-bottom: 1px solid var(--admin-border); font-size: 14px; vertical-align: middle; }
+table.admin-table th { color: var(--admin-muted); font-weight: 600; font-size: 12px; text-transform: uppercase; letter-spacing: .03em; }
+table.admin-table img.thumb { width: 64px; height: 48px; object-fit: cover; border-radius: 6px; display: block; }
+table.admin-table .row-actions { display: flex; gap: 8px; white-space: nowrap; }
+
+.admin-login-wrap {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+}
+.admin-login-card {
+    background: #fff;
+    border: 1px solid var(--admin-border);
+    border-radius: 12px;
+    padding: 32px;
+    width: 100%;
+    max-width: 360px;
+}
+.admin-login-card h1 { text-align: center; }
+.admin-login-card .btn { width: 100%; justify-content: center; margin-top: 6px; }
+
+.two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+@media (max-width: 640px) {
+    .two-col { grid-template-columns: 1fr; }
+    .admin-topbar { flex-direction: column; align-items: flex-start; }
+}
+
+.admin-hint { color: var(--admin-muted); font-size: 13px; margin: -8px 0 20px; }

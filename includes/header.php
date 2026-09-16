@@ -59,9 +59,9 @@ $navItems = [
   "@context": "https://schema.org",
   "@type": "HVACBusiness",
   "name": "<?= e(SITE_NAME) ?>",
-  "telephone": "<?= e(PHONE_TEL) ?>",
-  "email": "<?= e(EMAIL_ADDR) ?>",
-  "areaServed": "<?= e(SITE_REGION) ?>",
+  "telephone": "<?= e(setting('phone_tel', PHONE_TEL)) ?>",
+  "email": "<?= e(setting('email', EMAIL_ADDR)) ?>",
+  "areaServed": "<?= e(setting('region', SITE_REGION)) ?>",
   "address": {
     "@type": "PostalAddress",
     "addressRegion": "Turiec",
@@ -77,20 +77,17 @@ $navItems = [
 <div class="topbar">
     <div class="container">
         <div class="topbar__contact">
-            <a href="tel:<?= e(PHONE_TEL) ?>"><?= icon('phone') ?> <?= e(PHONE_DISPLAY) ?></a>
-            <a href="mailto:<?= e(EMAIL_ADDR) ?>"><?= icon('mail') ?> <?= e(EMAIL_ADDR) ?></a>
+            <a href="tel:<?= e(setting('phone_tel', PHONE_TEL)) ?>"><?= icon('phone') ?> <?= e(setting('phone_display', PHONE_DISPLAY)) ?></a>
+            <a href="mailto:<?= e(setting('email', EMAIL_ADDR)) ?>"><?= icon('mail') ?> <?= e(setting('email', EMAIL_ADDR)) ?></a>
         </div>
-        <span class="topbar__tag"><?= icon('pin') ?> Pôsobíme v regióne <?= e(SITE_REGION) ?></span>
+        <span class="topbar__tag"><?= icon('pin') ?> Pôsobíme v regióne <?= e(setting('region', SITE_REGION)) ?></span>
     </div>
 </div>
 
 <header class="site-header" id="site-header">
     <div class="container">
         <a href="index.php" class="brand" aria-label="<?= e(SITE_NAME) ?> – domov">
-            <picture>
-                <source srcset="<?= asset('assets/img/logo-nav.webp') ?>" type="image/webp">
-                <img src="<?= asset('assets/img/logo-nav.png') ?>" alt="<?= e(SITE_NAME) ?>" class="brand-logo-img" width="480" height="313">
-            </picture>
+            <img src="<?= asset('assets/img/logo-color.png') ?>" alt="<?= e(SITE_NAME) ?>" class="brand-logo-img" width="640" height="360">
         </a>
 
         <nav class="main-nav" aria-label="Hlavná navigácia">
@@ -114,10 +111,7 @@ $navItems = [
     <div class="mobile-nav__backdrop" data-nav-close></div>
     <div class="mobile-nav__panel" role="dialog" aria-modal="true" aria-label="Mobilné menu">
         <div class="mobile-nav__top">
-            <picture>
-                <source srcset="<?= asset('assets/img/logo-nav.webp') ?>" type="image/webp">
-                <img src="<?= asset('assets/img/logo-nav.png') ?>" alt="<?= e(SITE_NAME) ?>" class="brand-logo-img" width="480" height="313">
-            </picture>
+            <img src="<?= asset('assets/img/logo-color.png') ?>" alt="<?= e(SITE_NAME) ?>" class="brand-logo-img" width="640" height="360">
             <button type="button" class="mobile-nav__close" id="nav-close" aria-label="Zavrieť menu">
                 <?= icon('close') ?>
             </button>
@@ -128,7 +122,7 @@ $navItems = [
             <?php endforeach; ?>
         </ul>
         <div class="mobile-nav__foot">
-            <a href="tel:<?= e(PHONE_TEL) ?>" class="btn btn--outline btn--block"><?= icon('phone') ?> <?= e(PHONE_DISPLAY) ?></a>
+            <a href="tel:<?= e(setting('phone_tel', PHONE_TEL)) ?>" class="btn btn--outline btn--block"><?= icon('phone') ?> <?= e(setting('phone_display', PHONE_DISPLAY)) ?></a>
             <a href="kontakt.php" class="btn btn--accent btn--block"><?= icon('arrow-right') ?> Nezáväzná ponuka</a>
         </div>
     </div>

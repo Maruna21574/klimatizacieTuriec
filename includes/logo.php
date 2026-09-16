@@ -1,6 +1,6 @@
 <?php
 /**
- * Inline SVG logo "Klíma Turiec" — tri vrcholy (Turiec v horách) + snehová vločka.
+ * Inline SVG logo "Klimatizácie Turiec" — tri vrcholy (Turiec v horách) + snehová vločka.
  * Vykresľuje sa priamo v HTML (nie ako <img>), preto dedí webfont Poppins.
  */
 
@@ -33,7 +33,7 @@ function renderLogo(string $variant = 'color', string $layout = 'horizontal', st
     </svg>';
 
     $wordStacked = $layout === 'stacked';
-    $wordmark = '<span class="brand-word' . ($wordStacked ? ' brand-word--stacked' : '') . '" style="color:' . $inkStrong . '">KLÍMA<span style="color:' . $inkSoft . '"> TURIEC</span></span>';
+    $wordmark = '<span class="brand-word' . ($wordStacked ? ' brand-word--stacked' : '') . '" style="color:' . $inkStrong . '">KLIMATIZÁCIE<span style="color:' . $inkSoft . '"> TURIEC</span></span>';
 
     $tag = $layout === 'stacked' ? 'brand-lockup brand-lockup--stacked' : 'brand-lockup';
     return '<span class="' . $tag . ($class ? ' ' . e($class) : '') . '">' . $mark . $wordmark . '</span>';

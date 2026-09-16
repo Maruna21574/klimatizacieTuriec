@@ -4,7 +4,6 @@
   var areaEl = document.getElementById('calc-area');
   if (!areaEl) return;
 
-  var roomEl = document.getElementById('calc-room');
   var ceilingEl = document.getElementById('calc-ceiling');
   var orientationEl = document.getElementById('calc-orientation');
   var peopleEl = document.getElementById('calc-people');
@@ -20,11 +19,19 @@
   var SIZES = [2.0, 2.5, 3.5, 5.0, 7.0, 9.0, 12.0];
   var KW_TO_BTU = 3412;
 
+  // Koeficienty a ceny sú editovateľné v admin sekcii (/admin/calculator.php) a sem sa
+  // dostávajú cez window.CALC_CONFIG (vygenerované v kalkulacka.php). Tu ostávajú len
+  // ako záložné hodnoty pre prípad, že by CALC_CONFIG z nejakého dôvodu chýbal.
+  var CONFIG = window.CALC_CONFIG || {};
+
+  // základný koeficient miestnosti (typ miestnosti bol z kalkulačky odstránený, používa sa jedna priemerná hodnota)
+  var ROOM_BASE = typeof CONFIG.roomBaseValue === 'number' ? CONFIG.roomBaseValue : 0.11;
+
   // extra heat load per person beyond the baseline 2 already factored into the room rates, in kW
-  var PERSON_LOAD_KW = 0.1;
+  var PERSON_LOAD_KW = typeof CONFIG.personLoadKw === 'number' ? CONFIG.personLoadKw : 0.1;
 
   // orientačné ceny montáže na Slovensku podľa výkonu jednotky (vrátane trasy do ROUTE_INCLUDED_M)
-  var PRICES = {
+  var PRICES = CONFIG.prices || {
     '2': [650, 850],
     '2.5': [700, 900],
     '3.5': [800, 1050],
@@ -33,8 +40,8 @@
     '9': [1700, 2200],
     '12': [2200, 2800]
   };
-  var ROUTE_INCLUDED_M = 3;
-  var ROUTE_RATE_EUR = 25;
+  var ROUTE_INCLUDED_M = typeof CONFIG.routeIncludedM === 'number' ? CONFIG.routeIncludedM : 3;
+  var ROUTE_RATE_EUR = typeof CONFIG.routeRateEur === 'number' ? CONFIG.routeRateEur : 25;
 
   function formatEur(n) {
     return Math.round(n).toLocaleString('sk-SK');
@@ -42,7 +49,7 @@
 
   function calc() {
     var area = Math.min(200, Math.max(1, parseFloat(areaEl.value) || 0));
-    var base = parseFloat(roomEl.value) || 0.1;
+    var base = ROOM_BASE;
     var ceiling = parseFloat(ceilingEl.value) || 1;
     var orientation = parseFloat(orientationEl.value) || 1;
     var people = Math.min(20, Math.max(0, parseFloat(peopleEl.value) || 0));
@@ -84,7 +91,7 @@
     }
   }
 
-  [areaEl, roomEl, ceilingEl, orientationEl, peopleEl, routeEl].forEach(function (el) {
+  [areaEl, ceilingEl, orientationEl, peopleEl, routeEl].forEach(function (el) {
     el.addEventListener('input', calc);
     el.addEventListener('change', calc);
   });

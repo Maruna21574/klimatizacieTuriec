@@ -33,6 +33,7 @@ function icon(string $name): string
         'quote' => '<path d="M9.5 6.5C6 7.7 4 10 4 13.4 4 15.9 5.7 17.5 8 17.5c2 0 3.5-1.4 3.5-3.4 0-1.8-1.2-3.1-2.9-3.2.4-1.6 1.7-2.8 3.4-3.4L9.5 6.5Zm9 0C15 7.7 13 10 13 13.4c0 2.5 1.7 4.1 4 4.1 2 0 3.5-1.4 3.5-3.4 0-1.8-1.2-3.1-2.9-3.2.4-1.6 1.7-2.8 3.4-3.4L18.5 6.5Z"/>',
         'building' => '<path d="M4 21V4h9v17M13 21h7V9h-7M7 8h2M7 11h2M7 14h2M16 12h2M16 15h2M16 18h2" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>',
         'route' => '<circle cx="6" cy="6" r="2.3"/><circle cx="18" cy="18" r="2.3"/><path d="M6 8.3v3.2A4.5 4.5 0 0 0 10.5 16H14a4 4 0 0 0 4-4" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>',
+        'cookie' => '<path d="M21 12.6a8.6 8.6 0 1 1-9-9c-.2 1.4.5 2.8 1.8 3.4 1.3.6 2.8.2 3.6-.9.2 1.8 1.7 3.2 3.6 3.2v3.3Z" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/><circle cx="9" cy="11" r="1.1"/><circle cx="13.3" cy="14.3" r="1.1"/><circle cx="9.3" cy="15.8" r="1.1"/><circle cx="14.7" cy="10" r="1.1"/>',
     ];
 
     if (!isset($icons[$name])) {

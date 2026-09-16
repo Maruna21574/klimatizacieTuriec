@@ -42,7 +42,10 @@
 .brand-lockup {
   display: inline-flex;
   align-items: center;
-  gap: .65rem;
+  gap: .45rem;
+  min-width: 0;
+
+  @include bp-up($bp-md) { gap: .65rem; }
 
   &--stacked {
     flex-direction: column;
@@ -51,16 +54,26 @@
   }
 }
 
-.brand-mark { flex-shrink: 0; }
+.brand-mark {
+  flex-shrink: 0;
+  width: 34px;
+  height: auto;
+
+  @include bp-up($bp-md) { width: 42px; }
+}
 
 .brand-word {
   font-family: $font-heading;
   font-weight: 800;
-  font-size: 1.28rem;
-  letter-spacing: .01em;
+  font-size: clamp(.82rem, 3.4vw, 1.15rem);
+  letter-spacing: 0;
   line-height: 1.05;
+  white-space: nowrap;
 
-  &--stacked { font-size: 1.4rem; letter-spacing: .04em; }
+  @include bp-up($bp-md) { font-size: 1.15rem; }
+  @include bp-up($bp-lg) { font-size: 1.28rem; }
+
+  &--stacked { font-size: 1.4rem; letter-spacing: .04em; white-space: normal; }
 }
 
 // --- Site header ---------------------------------------------------
@@ -84,14 +97,15 @@
   }
 }
 
-.brand { display: inline-flex; }
+.brand { display: inline-flex; min-width: 0; }
 
 .brand-logo-img {
-  height: 52px;
+  height: 38px;
   width: auto;
   display: block;
 
-  @include bp-up($bp-lg) { height: 58px; }
+  @include bp-up($bp-md) { height: 44px; }
+  @include bp-up($bp-lg) { height: 50px; }
 }
 
 .main-nav { display: none; @include bp-up($bp-lg) { display: block; } }
@@ -152,6 +166,7 @@
   z-index: 100;
   visibility: hidden;
   pointer-events: none;
+  overflow: hidden; // panel je pri zatvorení posunutý translateX(100%) mimo obrazovky - bez tohto by rozširoval šírku stránky a spôsoboval vodorovné skrolovanie
 
   &.is-open { visibility: visible; pointer-events: auto; }
 

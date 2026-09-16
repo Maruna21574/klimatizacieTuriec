@@ -11,10 +11,16 @@
   padding-bottom: $space-4;
   border-bottom: 1px solid rgba(255, 255, 255, .12);
 
-  @include bp-up($bp-md) { grid-template-columns: 1.4fr 1fr 1fr 1fr; gap: $space-3; }
+  @include bp-up($bp-md) { grid-template-columns: 1.4fr 1fr 1fr; gap: $space-3; }
 }
 
 .site-footer__brand { margin-bottom: $space-2; }
+
+.footer-logo-img {
+  height: 40px;
+  width: auto;
+  display: block;
+}
 
 .site-footer__desc { max-width: 320px; color: rgba(255, 255, 255, .62); }
 

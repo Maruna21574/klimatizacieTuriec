@@ -1,9 +1,11 @@
 <?php
 declare(strict_types=1);
 
+require_once __DIR__ . '/includes/config.php';
+
 $activePage = 'kontakt';
-$pageTitle = 'Kontakt – Klíma Turiec';
-$pageDescription = 'Napíšte nám alebo zavolajte – radi vám pripravíme nezáväznú cenovú ponuku na montáž klimatizácie v regióne Turiec.';
+$pageTitle = cms('kontakt', 'seo_title');
+$pageDescription = cms('kontakt', 'seo_description');
 
 require_once __DIR__ . '/includes/header.php';
 
@@ -14,50 +16,50 @@ $formError = isset($_GET['chyba']) && $_GET['chyba'] === '1';
 <section class="page-hero">
     <canvas class="hero-grid-canvas" aria-hidden="true"></canvas>
     <div class="container">
-        <h1>Poďme naplánovať vašu klimatizáciu</h1>
-        <p>Napíšte nám pár slov o tom, čo potrebujete, alebo rovno zavolajte. Ozveme sa spravidla do 24 hodín s nezáväznou ponukou.</p>
+        <h1><?= cms('kontakt', 'hero_title') ?></h1>
+        <p><?= cms('kontakt', 'hero_lead') ?></p>
     </div>
 </section>
 
 <section class="section section--tight">
     <div class="container contact-grid">
         <div class="contact-cards reveal">
-            <a href="tel:<?= e(PHONE_TEL) ?>" class="contact-card">
+            <a href="tel:<?= e(setting('phone_tel', PHONE_TEL)) ?>" class="contact-card">
                 <span class="contact-card__icon"><?= icon('phone') ?></span>
                 <div>
                     <h3>Zavolajte nám</h3>
-                    <span><?= e(PHONE_DISPLAY) ?></span>
+                    <span><?= e(setting('phone_display', PHONE_DISPLAY)) ?></span>
                 </div>
             </a>
-            <a href="mailto:<?= e(EMAIL_ADDR) ?>" class="contact-card">
+            <a href="mailto:<?= e(setting('email', EMAIL_ADDR)) ?>" class="contact-card">
                 <span class="contact-card__icon"><?= icon('mail') ?></span>
                 <div>
                     <h3>Napíšte e-mail</h3>
-                    <span><?= e(EMAIL_ADDR) ?></span>
+                    <span><?= e(setting('email', EMAIL_ADDR)) ?></span>
                 </div>
             </a>
             <div class="contact-card">
                 <span class="contact-card__icon"><?= icon('pin') ?></span>
                 <div>
                     <h3>Pôsobíme v regióne</h3>
-                    <span><?= e(SITE_REGION) ?></span>
+                    <span><?= e(setting('region', SITE_REGION)) ?></span>
                 </div>
             </div>
             <div class="contact-card">
                 <span class="contact-card__icon"><?= icon('clock') ?></span>
                 <div>
                     <h3>Dostupnosť</h3>
-                    <span>Po – Ne: 7:00 – 20:00</span>
+                    <span><?= e(setting('opening_hours', 'Po – Ne: 7:00 – 20:00')) ?></span>
                 </div>
             </div>
         </div>
 
         <div class="contact-form-wrap reveal" id="formular">
             <?php if ($formSent): ?>
-            <div class="alert alert--success"><?= icon('check-circle') ?> Ďakujeme! Správa bola odoslaná, ozveme sa vám čo najskôr.</div>
+            <div class="alert alert--success"><?= icon('check-circle') ?> <?= cms('kontakt', 'success_message') ?></div>
             <?php endif; ?>
             <?php if ($formError): ?>
-            <div class="alert alert--error">Správu sa nepodarilo odoslať. Skúste to prosím znova alebo nám zavolajte.</div>
+            <div class="alert alert--error"><?= cms('kontakt', 'error_message') ?></div>
             <?php endif; ?>
 
             <form class="contact-form" action="send-mail.php" method="post" novalidate>
@@ -85,7 +87,7 @@ $formError = isset($_GET['chyba']) && $_GET['chyba'] === '1';
                 </div>
                 <input type="text" name="website" class="hp-field" tabindex="-1" autocomplete="off" aria-hidden="true">
                 <button type="submit" class="btn btn--accent btn--lg btn--block"><?= icon('arrow-right') ?> Odoslať dopyt</button>
-                <p class="contact-form__note">Odoslaním súhlasíte so spracovaním údajov za účelom vybavenia vášho dopytu.</p>
+                <p class="contact-form__note"><?= cms('kontakt', 'form_note') ?></p>
             </form>
         </div>
     </div>
@@ -94,7 +96,7 @@ $formError = isset($_GET['chyba']) && $_GET['chyba'] === '1';
 <section class="section">
     <div class="container">
         <div class="map-frame reveal">
-            <iframe src="<?= e(GOOGLE_MAPS_EMBED) ?>" width="100%" height="420" style="border:0;" allowfullscreen loading="lazy" referrerpolicy="no-referrer-when-downgrade" title="Mapa pôsobenia – región Turiec"></iframe>
+            <iframe src="<?= e(setting('google_maps_embed', GOOGLE_MAPS_EMBED)) ?>" width="100%" height="420" style="border:0;" allowfullscreen loading="lazy" referrerpolicy="no-referrer-when-downgrade" title="Mapa pôsobenia – región Turiec"></iframe>
         </div>
     </div>
 </section>

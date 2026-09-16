@@ -1,9 +1,13 @@
 <?php
 declare(strict_types=1);
 
+require_once __DIR__ . '/includes/config.php';
+
 $activePage = 'kalkulacka';
-$pageTitle = 'Kalkulačka výkonu klimatizácie – Klíma Turiec';
-$pageDescription = 'Zistite orientačný výkon klimatizácie podľa plochy a typu miestnosti. Rýchly odhad zadarmo, presný návrh pripravíme pri bezplatnej obhliadke.';
+$pageTitle = cms('kalkulacka', 'seo_title');
+$pageDescription = cms('kalkulacka', 'seo_description');
+
+$calc = calcSettings();
 
 require_once __DIR__ . '/includes/header.php';
 ?>
@@ -11,8 +15,8 @@ require_once __DIR__ . '/includes/header.php';
 <section class="page-hero">
     <canvas class="hero-grid-canvas" aria-hidden="true"></canvas>
     <div class="container">
-        <h1>Kalkulačka výkonu klimatizácie</h1>
-        <p>Zadajte parametre miestnosti a hneď uvidíte orientačný výkon jednotky aj odhadovanú cenu montáže. Presný návrh pripravíme zadarmo priamo na mieste.</p>
+        <h1><?= cms('kalkulacka', 'hero_title') ?></h1>
+        <p><?= cms('kalkulacka', 'hero_lead') ?></p>
     </div>
 </section>
 
@@ -24,31 +28,21 @@ require_once __DIR__ . '/includes/header.php';
                 <input type="number" id="calc-area" min="5" max="150" step="1" value="20" inputmode="numeric">
             </div>
             <div class="form-row">
-                <label for="calc-room">Typ miestnosti</label>
-                <select id="calc-room">
-                    <option value="0.10">Spálňa / izba</option>
-                    <option value="0.11" selected>Obývačka</option>
-                    <option value="0.13">Kuchyňa</option>
-                    <option value="0.12">Kancelária / prevádzka</option>
-                    <option value="0.14">Podkrovie (izba pod strechou)</option>
-                </select>
-            </div>
-            <div class="form-row">
                 <label for="calc-ceiling">Výška stropu</label>
                 <select id="calc-ceiling">
-                    <option value="1">do 2,6 m</option>
-                    <option value="1.12">2,6 – 3 m</option>
-                    <option value="1.25">nad 3 m</option>
+                    <option value="<?= e($calc['ceiling_low_value']) ?>"><?= e($calc['ceiling_low_label']) ?></option>
+                    <option value="<?= e($calc['ceiling_mid_value']) ?>"><?= e($calc['ceiling_mid_label']) ?></option>
+                    <option value="<?= e($calc['ceiling_high_value']) ?>"><?= e($calc['ceiling_high_label']) ?></option>
                 </select>
             </div>
             <div class="form-row">
                 <label for="calc-orientation">Orientácia okien</label>
                 <select id="calc-orientation">
-                    <option value="0.95">Bez okien / vnútorná miestnosť</option>
-                    <option value="1" selected>Sever (najmenej slnka)</option>
-                    <option value="1.05">Východ</option>
-                    <option value="1.1">Západ</option>
-                    <option value="1.15">Juh (najviac slnka)</option>
+                    <option value="<?= e($calc['orient_none_value']) ?>"><?= e($calc['orient_none_label']) ?></option>
+                    <option value="<?= e($calc['orient_north_value']) ?>" selected><?= e($calc['orient_north_label']) ?></option>
+                    <option value="<?= e($calc['orient_east_value']) ?>"><?= e($calc['orient_east_label']) ?></option>
+                    <option value="<?= e($calc['orient_west_value']) ?>"><?= e($calc['orient_west_label']) ?></option>
+                    <option value="<?= e($calc['orient_south_value']) ?>"><?= e($calc['orient_south_label']) ?></option>
                 </select>
             </div>
             <div class="form-row form-row--split">
@@ -76,17 +70,35 @@ require_once __DIR__ . '/includes/header.php';
                 <span id="calc-price-note" class="calc-price__note">vrátane 3 m trasy k vonkajšej jednotke</span>
             </div>
             <ul class="check-list">
-                <li><?= icon('check') ?> Odhad podľa bežných pravidiel pre chladenie priestoru</li>
-                <li><?= icon('check') ?> Cena je orientačná, presnú vám potvrdíme po obhliadke</li>
-                <li><?= icon('check') ?> Poradíme aj s výberom značky a umiestnením jednotiek</li>
+                <li><?= icon('check') ?> <?= cms('kalkulacka', 'check_1') ?></li>
+                <li><?= icon('check') ?> <?= cms('kalkulacka', 'check_2') ?></li>
+                <li><?= icon('check') ?> <?= cms('kalkulacka', 'check_3') ?></li>
             </ul>
             <div class="hero__actions">
                 <a href="kontakt.php" class="btn btn--accent btn--lg"><?= icon('arrow-right') ?> Nezáväzná cenová ponuka</a>
-                <a href="tel:<?= e(PHONE_TEL) ?>" class="btn btn--outline-light btn--lg"><?= icon('phone') ?> <?= e(PHONE_DISPLAY) ?></a>
+                <a href="tel:<?= e(setting('phone_tel', PHONE_TEL)) ?>" class="btn btn--outline-light btn--lg"><?= icon('phone') ?> <?= e(setting('phone_display', PHONE_DISPLAY)) ?></a>
             </div>
-            <p class="calc-disclaimer">Ceny sú orientačné podľa bežných cien montáže na Slovensku a slúžia len ako predbežný odhad. Konečná cena závisí od konkrétnej obhliadky, značky jednotky a stavebných úprav.</p>
+            <p class="calc-disclaimer"><?= cms('kalkulacka', 'disclaimer') ?></p>
         </div>
     </div>
 </section>
+
+<script>
+window.CALC_CONFIG = {
+    roomBaseValue: <?= json_encode((float) $calc['room_base_value']) ?>,
+    personLoadKw: <?= json_encode((float) $calc['person_load_kw']) ?>,
+    routeIncludedM: <?= json_encode((float) $calc['route_included_m']) ?>,
+    routeRateEur: <?= json_encode((float) $calc['route_rate_eur']) ?>,
+    prices: {
+        '2': [<?= (int) $calc['price_2_min'] ?>, <?= (int) $calc['price_2_max'] ?>],
+        '2.5': [<?= (int) $calc['price_2_5_min'] ?>, <?= (int) $calc['price_2_5_max'] ?>],
+        '3.5': [<?= (int) $calc['price_3_5_min'] ?>, <?= (int) $calc['price_3_5_max'] ?>],
+        '5': [<?= (int) $calc['price_5_min'] ?>, <?= (int) $calc['price_5_max'] ?>],
+        '7': [<?= (int) $calc['price_7_min'] ?>, <?= (int) $calc['price_7_max'] ?>],
+        '9': [<?= (int) $calc['price_9_min'] ?>, <?= (int) $calc['price_9_max'] ?>],
+        '12': [<?= (int) $calc['price_12_min'] ?>, <?= (int) $calc['price_12_max'] ?>]
+    }
+};
+</script>
 
 <?php require_once __DIR__ . '/includes/footer.php'; ?>

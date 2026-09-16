@@ -1,9 +1,11 @@
 <?php
 declare(strict_types=1);
 
+require_once __DIR__ . '/includes/config.php';
+
 $activePage = 'sluzby';
-$pageTitle = 'Služby – montáž, servis a čistenie klimatizácií | Klíma Turiec';
-$pageDescription = 'Montáž klimatizácií, servis, čistenie, diagnostika a doplnenie chladiva. Poradenstvo pri výbere vhodnej klimatizácie pre dom, byt aj prevádzku.';
+$pageTitle = cms('sluzby', 'seo_title');
+$pageDescription = cms('sluzby', 'seo_description');
 
 require_once __DIR__ . '/includes/header.php';
 ?>
@@ -11,8 +13,8 @@ require_once __DIR__ . '/includes/header.php';
 <section class="page-hero">
     <canvas class="hero-grid-canvas" aria-hidden="true"></canvas>
     <div class="container">
-        <h1>Všetko okolo klimatizácie na jednom mieste</h1>
-        <p>Od výberu vhodného typu jednotky, cez odbornú montáž, až po pravidelný servis a čistenie. Pracujeme so všetkými bežnými značkami klimatizácií.</p>
+        <h1><?= cms('sluzby', 'hero_title') ?></h1>
+        <p><?= cms('sluzby', 'hero_lead') ?></p>
     </div>
 </section>
 
@@ -20,13 +22,13 @@ require_once __DIR__ . '/includes/header.php';
     <div class="container service-detail">
         <div class="service-detail__text reveal">
             <span class="service-detail__icon"><?= icon('snowflake') ?></span>
-            <h2>Montáž klimatizácií</h2>
-            <p>Realizujeme montáž nástenných aj multisplit klimatizácií pre rodinné domy, byty, kancelárie a menšie prevádzky. Súčasťou montáže je návrh optimálneho umiestnenia vnútornej aj vonkajšej jednotky, vedenie potrubia v maskovacích lištách, elektrické zapojenie, tlaková skúška, vákuovanie okruhu a odborné spustenie.</p>
+            <h2><?= cms('sluzby', 'montaz_title') ?></h2>
+            <p><?= cms('sluzby', 'montaz_desc') ?></p>
             <ul class="check-list">
-                <li><?= icon('check') ?> Nástenné aj multisplit jednotky</li>
-                <li><?= icon('check') ?> Rodinné domy, byty aj prevádzky</li>
-                <li><?= icon('check') ?> Čisté vedenie potrubia v lištách</li>
-                <li><?= icon('check') ?> Tlaková skúška a vákuovanie okruhu</li>
+                <li><?= icon('check') ?> <?= cms('sluzby', 'montaz_li_1') ?></li>
+                <li><?= icon('check') ?> <?= cms('sluzby', 'montaz_li_2') ?></li>
+                <li><?= icon('check') ?> <?= cms('sluzby', 'montaz_li_3') ?></li>
+                <li><?= icon('check') ?> <?= cms('sluzby', 'montaz_li_4') ?></li>
             </ul>
         </div>
         <div class="service-detail__media reveal">
@@ -42,13 +44,13 @@ require_once __DIR__ . '/includes/header.php';
         </div>
         <div class="service-detail__text reveal">
             <span class="service-detail__icon"><?= icon('tool') ?></span>
-            <h2>Servis a čistenie</h2>
-            <p>Pravidelný servis predlžuje životnosť klimatizácie a udržiava zdravý vzduch v priestore. Vyčistíme filtre a výmenník, skontrolujeme tesnosť okruhu, funkčnosť odvodu kondenzátu a v prípade potreby vykonáme dezinfekciu jednotky.</p>
+            <h2><?= cms('sluzby', 'servis_title') ?></h2>
+            <p><?= cms('sluzby', 'servis_desc') ?></p>
             <ul class="check-list">
-                <li><?= icon('check') ?> Čistenie filtrov a výmenníka</li>
-                <li><?= icon('check') ?> Dezinfekcia vnútornej jednotky</li>
-                <li><?= icon('check') ?> Kontrola odvodu kondenzátu</li>
-                <li><?= icon('check') ?> Odporúčaný servis raz ročne</li>
+                <li><?= icon('check') ?> <?= cms('sluzby', 'servis_li_1') ?></li>
+                <li><?= icon('check') ?> <?= cms('sluzby', 'servis_li_2') ?></li>
+                <li><?= icon('check') ?> <?= cms('sluzby', 'servis_li_3') ?></li>
+                <li><?= icon('check') ?> <?= cms('sluzby', 'servis_li_4') ?></li>
             </ul>
         </div>
     </div>
@@ -58,13 +60,13 @@ require_once __DIR__ . '/includes/header.php';
     <div class="container service-detail">
         <div class="service-detail__text reveal">
             <span class="service-detail__icon"><?= icon('gauge') ?></span>
-            <h2>Diagnostika a doplnenie chladiva</h2>
-            <p>Ak klimatizácia nechladí ako má, príčinou je často únik alebo nedostatok chladiva. Digitálnymi manometrami zmeriame tlak v okruhu, nájdeme prípadný únik a chladivo bezpečne doplníme na presnú hodnotu podľa výrobcu.</p>
+            <h2><?= cms('sluzby', 'diagnostika_title') ?></h2>
+            <p><?= cms('sluzby', 'diagnostika_desc') ?></p>
             <ul class="check-list">
-                <li><?= icon('check') ?> Meranie tlaku digitálnymi manometrami</li>
-                <li><?= icon('check') ?> Vyhľadanie a odstránenie úniku</li>
-                <li><?= icon('check') ?> Presné doplnenie chladiva</li>
-                <li><?= icon('check') ?> Odstránenie bežných porúch</li>
+                <li><?= icon('check') ?> <?= cms('sluzby', 'diagnostika_li_1') ?></li>
+                <li><?= icon('check') ?> <?= cms('sluzby', 'diagnostika_li_2') ?></li>
+                <li><?= icon('check') ?> <?= cms('sluzby', 'diagnostika_li_3') ?></li>
+                <li><?= icon('check') ?> <?= cms('sluzby', 'diagnostika_li_4') ?></li>
             </ul>
         </div>
         <div class="service-detail__media reveal">
@@ -80,13 +82,13 @@ require_once __DIR__ . '/includes/header.php';
         </div>
         <div class="service-detail__text reveal">
             <span class="service-detail__icon"><?= icon('leaf') ?></span>
-            <h2>Poradenstvo a výber jednotky</h2>
-            <p>Nie každý priestor potrebuje rovnaký výkon. Pri obhliadke posúdime veľkosť a orientáciu miestnosti, počet okien aj zdroje tepla a odporučíme vhodný výkon, typ aj umiestnenie jednotky – bez zbytočného predimenzovania.</p>
+            <h2><?= cms('sluzby', 'poradenstvo_title') ?></h2>
+            <p><?= cms('sluzby', 'poradenstvo_desc') ?></p>
             <ul class="check-list">
-                <li><?= icon('check') ?> Výpočet vhodného výkonu jednotky</li>
-                <li><?= icon('check') ?> Porovnanie dostupných značiek</li>
-                <li><?= icon('check') ?> Odporúčanie umiestnenia jednotiek</li>
-                <li><?= icon('check') ?> Nezáväzná cenová ponuka</li>
+                <li><?= icon('check') ?> <?= cms('sluzby', 'poradenstvo_li_1') ?></li>
+                <li><?= icon('check') ?> <?= cms('sluzby', 'poradenstvo_li_2') ?></li>
+                <li><?= icon('check') ?> <?= cms('sluzby', 'poradenstvo_li_3') ?></li>
+                <li><?= icon('check') ?> <?= cms('sluzby', 'poradenstvo_li_4') ?></li>
             </ul>
         </div>
     </div>
@@ -95,8 +97,8 @@ require_once __DIR__ . '/includes/header.php';
 <section class="section brands">
     <div class="container">
         <div class="section__head reveal">
-            <span class="section__kicker">Značky, s ktorými pracujeme</span>
-            <h2>Kvalitné klimatizácie overených výrobcov</h2>
+            <span class="section__kicker"><?= cms('sluzby', 'brands_kicker') ?></span>
+            <h2><?= cms('sluzby', 'brands_title') ?></h2>
         </div>
         <div class="brands__row reveal">
             <?php foreach (brandList() as $b): ?>

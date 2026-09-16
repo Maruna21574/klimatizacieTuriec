@@ -43,7 +43,7 @@ foreach ($headers as $key => $value) {
     $headerString .= "{$key}: {$value}\r\n";
 }
 
-$sent = @mail(EMAIL_ADDR, $subject, $body, $headerString);
+$sent = @mail(setting('email', EMAIL_ADDR), $subject, $body, $headerString);
 
 header('Location: kontakt.php?' . ($sent ? 'odoslane=1' : 'chyba=1'));
 exit;

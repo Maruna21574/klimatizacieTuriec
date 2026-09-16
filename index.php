@@ -1,9 +1,11 @@
 <?php
 declare(strict_types=1);
 
+require_once __DIR__ . '/includes/config.php';
+
 $activePage = 'domov';
-$pageTitle = 'Klíma Turiec – Montáž a servis klimatizácií v Martine a Turci';
-$pageDescription = 'Montáž, servis a čistenie klimatizácií v Martine, Vrútkach a celom regióne Turiec. Bezplatná obhliadka, rýchle termíny, záruka na montáž.';
+$pageTitle = cms('index', 'seo_title');
+$pageDescription = cms('index', 'seo_description');
 
 require_once __DIR__ . '/includes/header.php';
 ?>
@@ -14,16 +16,16 @@ require_once __DIR__ . '/includes/header.php';
     </div>
     <div class="container hero__inner">
         <div class="hero__content reveal">
-            <h1>Príjemný chlad vo vašom&nbsp;dome, <span>presne podľa vašich predstáv</span></h1>
-            <p class="hero__lead">Montujeme, servisujeme a čistíme klimatizácie všetkých značiek. Od obhliadky po spustenie zvládneme montáž rodinného domu alebo bytu spravidla do pár dní.</p>
+            <h1><?= cms('index', 'hero_title') ?></h1>
+            <p class="hero__lead"><?= cms('index', 'hero_lead') ?></p>
             <div class="hero__actions">
                 <a href="kontakt.php" class="btn btn--accent btn--lg"><?= icon('arrow-right') ?> Nezáväzná cenová ponuka</a>
-                <a href="tel:<?= e(PHONE_TEL) ?>" class="btn btn--outline-light btn--lg"><?= icon('phone') ?> <?= e(PHONE_DISPLAY) ?></a>
+                <a href="tel:<?= e(setting('phone_tel', PHONE_TEL)) ?>" class="btn btn--outline-light btn--lg"><?= icon('phone') ?> <?= e(setting('phone_display', PHONE_DISPLAY)) ?></a>
             </div>
             <ul class="hero__points">
-                <li><?= icon('check') ?> Bezplatná obhliadka a návrh riešenia</li>
-                <li><?= icon('check') ?> Montáž do 1–2 týždňov</li>
-                <li><?= icon('check') ?> Záruka na montáž aj servis</li>
+                <li><?= icon('check') ?> <?= cms('index', 'hero_point_1') ?></li>
+                <li><?= icon('check') ?> <?= cms('index', 'hero_point_2') ?></li>
+                <li><?= icon('check') ?> <?= cms('index', 'hero_point_3') ?></li>
             </ul>
         </div>
         <div class="hero__visual reveal">
@@ -51,33 +53,33 @@ require_once __DIR__ . '/includes/header.php';
 <section class="section" id="sluzby-prehlad">
     <div class="container">
         <div class="section__head reveal">
-            <span class="section__kicker">Čo pre vás urobíme</span>
-            <h2>Kompletné služby okolo klimatizácie</h2>
-            <p>Od prvého telefonátu až po pravidelný servis – všetko zastrešíme jeden dodávateľ.</p>
+            <span class="section__kicker"><?= cms('index', 'services_kicker') ?></span>
+            <h2><?= cms('index', 'services_title') ?></h2>
+            <p><?= cms('index', 'services_lead') ?></p>
         </div>
         <div class="service-grid">
             <article class="service-card reveal">
                 <span class="service-card__icon"><?= icon('snowflake') ?></span>
-                <h3>Montáž klimatizácií</h3>
-                <p>Nástenné aj multisplit jednotky pre rodinné domy, byty a prevádzky – čisté vedenie potrubia, odborné zapojenie.</p>
+                <h3><?= cms('index', 'service_1_title') ?></h3>
+                <p><?= cms('index', 'service_1_desc') ?></p>
                 <a href="sluzby.php#montaz">Viac o montáži <?= icon('arrow-right') ?></a>
             </article>
             <article class="service-card reveal">
                 <span class="service-card__icon"><?= icon('tool') ?></span>
-                <h3>Servis a čistenie</h3>
-                <p>Pravidelná údržba, dezinfekcia a čistenie filtrov predĺžia životnosť jednotky a udržia zdravý vzduch.</p>
+                <h3><?= cms('index', 'service_2_title') ?></h3>
+                <p><?= cms('index', 'service_2_desc') ?></p>
                 <a href="sluzby.php#servis">Viac o servise <?= icon('arrow-right') ?></a>
             </article>
             <article class="service-card reveal">
                 <span class="service-card__icon"><?= icon('gauge') ?></span>
-                <h3>Diagnostika a chladivo</h3>
-                <p>Meranie tlaku, dopĺňanie chladiva a odstránenie porúch pomocou digitálnych manometrov.</p>
+                <h3><?= cms('index', 'service_3_title') ?></h3>
+                <p><?= cms('index', 'service_3_desc') ?></p>
                 <a href="sluzby.php#diagnostika">Viac o diagnostike <?= icon('arrow-right') ?></a>
             </article>
             <article class="service-card reveal">
                 <span class="service-card__icon"><?= icon('leaf') ?></span>
-                <h3>Poradenstvo a výber</h3>
-                <p>Poradíme s výkonom, umiestnením aj vhodnou značkou podľa veľkosti a orientácie priestoru.</p>
+                <h3><?= cms('index', 'service_4_title') ?></h3>
+                <p><?= cms('index', 'service_4_desc') ?></p>
                 <a href="sluzby.php#poradenstvo">Viac o poradenstve <?= icon('arrow-right') ?></a>
             </article>
         </div>
@@ -93,35 +95,35 @@ require_once __DIR__ . '/includes/header.php';
             </div>
         </div>
         <div class="why__content reveal">
-            <span class="section__kicker">Prečo si vybrať nás</span>
-            <h2>Montáž, na ktorú sa môžete spoľahnúť</h2>
+            <span class="section__kicker"><?= cms('index', 'why_kicker') ?></span>
+            <h2><?= cms('index', 'why_title') ?></h2>
             <div class="why__list">
                 <div class="why__item">
                     <span><?= icon('sun') ?></span>
                     <div>
-                        <h4>Rýchle termíny</h4>
-                        <p>Väčšinu montáží zrealizujeme do 1–2 týždňov od obhliadky, v sezóne aj skôr.</p>
+                        <h4><?= cms('index', 'why_1_title') ?></h4>
+                        <p><?= cms('index', 'why_1_desc') ?></p>
                     </div>
                 </div>
                 <div class="why__item">
                     <span><?= icon('shield') ?></span>
                     <div>
-                        <h4>Záruka a poistenie</h4>
-                        <p>Na montáž aj prácu poskytujeme záruku, práce vykonávame s poistením zodpovednosti.</p>
+                        <h4><?= cms('index', 'why_2_title') ?></h4>
+                        <p><?= cms('index', 'why_2_desc') ?></p>
                     </div>
                 </div>
                 <div class="why__item">
                     <span><?= icon('gauge') ?></span>
                     <div>
-                        <h4>Odborná montáž</h4>
-                        <p>Tlakové skúšky, vákuovanie a presné dávkovanie chladiva pri každej inštalácii.</p>
+                        <h4><?= cms('index', 'why_3_title') ?></h4>
+                        <p><?= cms('index', 'why_3_desc') ?></p>
                     </div>
                 </div>
                 <div class="why__item">
                     <span><?= icon('spark') ?></span>
                     <div>
-                        <h4>Čistá práca</h4>
-                        <p>Estetické vedenie potrubia v maskovacích lištách a upratané pracovisko po montáži.</p>
+                        <h4><?= cms('index', 'why_4_title') ?></h4>
+                        <p><?= cms('index', 'why_4_desc') ?></p>
                     </div>
                 </div>
             </div>
@@ -132,29 +134,29 @@ require_once __DIR__ . '/includes/header.php';
 <section class="section">
     <div class="container">
         <div class="section__head reveal">
-            <span class="section__kicker">Ako to prebieha</span>
-            <h2>Od obhliadky po spustenie v 4 krokoch</h2>
+            <span class="section__kicker"><?= cms('index', 'process_kicker') ?></span>
+            <h2><?= cms('index', 'process_title') ?></h2>
         </div>
         <div class="process">
             <div class="process__step reveal">
                 <span class="process__num">1</span>
-                <h3>Obhliadka a ponuka</h3>
-                <p>Prídeme k vám, prezrieme priestor a do 24 hodín pošleme nezáväznú cenovú ponuku.</p>
+                <h3><?= cms('index', 'process_1_title') ?></h3>
+                <p><?= cms('index', 'process_1_desc') ?></p>
             </div>
             <div class="process__step reveal">
                 <span class="process__num">2</span>
-                <h3>Návrh riešenia</h3>
-                <p>Odporučíme výkon a umiestnenie jednotky presne podľa vášho priestoru a potrieb.</p>
+                <h3><?= cms('index', 'process_2_title') ?></h3>
+                <p><?= cms('index', 'process_2_desc') ?></p>
             </div>
             <div class="process__step reveal">
                 <span class="process__num">3</span>
-                <h3>Montáž</h3>
-                <p>Odborná inštalácia, tlaková skúška a vákuovanie okruhu skúsenými technikmi.</p>
+                <h3><?= cms('index', 'process_3_title') ?></h3>
+                <p><?= cms('index', 'process_3_desc') ?></p>
             </div>
             <div class="process__step reveal">
                 <span class="process__num">4</span>
-                <h3>Spustenie a servis</h3>
-                <p>Zaškolíme vás v ovládaní a v prípade záujmu zabezpečíme pravidelný servis.</p>
+                <h3><?= cms('index', 'process_4_title') ?></h3>
+                <p><?= cms('index', 'process_4_desc') ?></p>
             </div>
         </div>
     </div>
@@ -163,8 +165,8 @@ require_once __DIR__ . '/includes/header.php';
 <section class="section section--alt brands">
     <div class="container">
         <div class="section__head reveal">
-            <span class="section__kicker">Montujeme overené značky</span>
-            <h2>Klimatizácie, ktorým môžete dôverovať</h2>
+            <span class="section__kicker"><?= cms('index', 'brands_kicker') ?></span>
+            <h2><?= cms('index', 'brands_title') ?></h2>
         </div>
         <div class="brands__row reveal">
             <?php foreach (brandList() as $b): ?>
@@ -178,8 +180,8 @@ require_once __DIR__ . '/includes/header.php';
     <div class="container">
         <div class="section__head section__head--split reveal">
             <div>
-                <span class="section__kicker">Naša práca</span>
-                <h2>Vybrané realizácie</h2>
+                <span class="section__kicker"><?= cms('index', 'gallery_kicker') ?></span>
+                <h2><?= cms('index', 'gallery_title') ?></h2>
             </div>
             <a href="realizacie.php" class="btn btn--outline">Celá galéria <?= icon('arrow-right') ?></a>
         </div>

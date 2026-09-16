@@ -8,8 +8,9 @@
 .contact-cards {
   display: grid;
   gap: $space-2;
-  grid-template-columns: repeat(2, 1fr);
+  grid-template-columns: 1fr;
 
+  @include bp-up($bp-sm) { grid-template-columns: repeat(2, 1fr); }
   @include bp-up($bp-lg) { grid-template-columns: 1fr; }
 }
 
@@ -35,8 +36,11 @@
     color: $blue-700;
   }
 
-  h3 { font-size: .95rem; margin-bottom: .1rem; }
-  span { font-size: .88rem; color: $gray-600; }
+  // wrapper div okolo h3 + span - min-width:0 mu dovolí zmenšiť sa namiesto pretečenia karty
+  > div { min-width: 0; }
+
+  h3 { font-size: .95rem; margin-bottom: .1rem; overflow-wrap: break-word; }
+  span { font-size: .88rem; color: $gray-600; overflow-wrap: break-word; }
 
   &[href]:hover { transform: translateY(-3px); box-shadow: $shadow-md; color: $color-text; }
 }

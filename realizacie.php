@@ -1,9 +1,11 @@
 <?php
 declare(strict_types=1);
 
+require_once __DIR__ . '/includes/config.php';
+
 $activePage = 'realizacie';
-$pageTitle = 'Realizácie – galéria montáží klimatizácií | Klíma Turiec';
-$pageDescription = 'Pozrite si vybrané realizácie montáží klimatizácií v rodinných domoch, bytoch aj pri exteriérových priestoroch v regióne Turiec.';
+$pageTitle = cms('realizacie', 'seo_title');
+$pageDescription = cms('realizacie', 'seo_description');
 
 require_once __DIR__ . '/includes/header.php';
 
@@ -20,8 +22,8 @@ $categories = [
 <section class="page-hero">
     <canvas class="hero-grid-canvas" aria-hidden="true"></canvas>
     <div class="container">
-        <h1>Montáže, na ktoré sme hrdí</h1>
-        <p>Výber z realizovaných montáží v rodinných domoch, bytoch aj pri exteriérových priestoroch v Turci. Kliknutím na fotografiu si ju zobrazíte v plnej veľkosti.</p>
+        <h1><?= cms('realizacie', 'hero_title') ?></h1>
+        <p><?= cms('realizacie', 'hero_lead') ?></p>
     </div>
 </section>
 
