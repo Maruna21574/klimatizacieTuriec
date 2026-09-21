@@ -20,7 +20,7 @@
         <div class="site-footer__top">
             <div>
                 <div class="site-footer__brand">
-                    <img src="<?= asset('assets/img/logo-white.png') ?>" alt="<?= e(SITE_NAME) ?>" class="footer-logo-img" width="640" height="360">
+                    <img src="<?= asset('assets/img/logo-white.png') ?>" alt="<?= e(SITE_NAME) ?>" class="footer-logo-img" width="831" height="440">
                 </div>
                 <p class="site-footer__desc"><?= cms('global', 'footer_desc') ?></p>
                 <div class="site-footer__social">

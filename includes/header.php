@@ -87,7 +87,7 @@ $navItems = [
 <header class="site-header" id="site-header">
     <div class="container">
         <a href="index.php" class="brand" aria-label="<?= e(SITE_NAME) ?> – domov">
-            <img src="<?= asset('assets/img/logo-color.png') ?>" alt="<?= e(SITE_NAME) ?>" class="brand-logo-img" width="640" height="360">
+            <img src="<?= asset('assets/img/logo-color.png') ?>" alt="<?= e(SITE_NAME) ?>" class="brand-logo-img" width="831" height="440">
         </a>
 
         <nav class="main-nav" aria-label="Hlavná navigácia">
@@ -111,7 +111,7 @@ $navItems = [
     <div class="mobile-nav__backdrop" data-nav-close></div>
     <div class="mobile-nav__panel" role="dialog" aria-modal="true" aria-label="Mobilné menu">
         <div class="mobile-nav__top">
-            <img src="<?= asset('assets/img/logo-color.png') ?>" alt="<?= e(SITE_NAME) ?>" class="brand-logo-img" width="640" height="360">
+            <img src="<?= asset('assets/img/logo-color.png') ?>" alt="<?= e(SITE_NAME) ?>" class="brand-logo-img" width="831" height="440">
             <button type="button" class="mobile-nav__close" id="nav-close" aria-label="Zavrieť menu">
                 <?= icon('close') ?>
             </button>
