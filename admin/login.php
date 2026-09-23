@@ -33,13 +33,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="robots" content="noindex, nofollow">
-<title>Prihlásenie – Administrácia Klimatizácie Turiec</title>
+<title>Prihlásenie – Administrácia Matrotech</title>
 <link rel="stylesheet" href="assets/admin.css?v=<?= (int) @filemtime(__DIR__ . '/assets/admin.css') ?>">
 </head>
 <body>
 <div class="admin-login-wrap">
     <div class="admin-login-card">
-        <h1>Klimatizácie Turiec</h1>
+        <h1>Matrotech</h1>
         <p class="admin-hint" style="text-align:center;">Prihlásenie do administrácie webu</p>
         <?php if ($error !== ''): ?>
         <div class="admin-alert admin-alert--error"><?= e($error) ?></div>

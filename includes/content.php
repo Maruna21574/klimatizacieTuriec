@@ -43,7 +43,7 @@ function pageContentRegistry(): array
         'index' => [
             'label' => 'Domov',
             'blocks' => [
-                'seo_title' => ['label' => 'SEO – titulok stránky', 'type' => 'text', 'default' => 'Klimatizácie Turiec – Montáž a servis klimatizácií v Martine a Turci'],
+                'seo_title' => ['label' => 'SEO – titulok stránky', 'type' => 'text', 'default' => 'Matrotech – Montáž a servis klimatizácií v Martine a Turci'],
                 'seo_description' => ['label' => 'SEO – meta popis', 'type' => 'textarea', 'default' => 'Montáž, servis a čistenie klimatizácií v Martine, Vrútkach a celom regióne Turiec. Bezplatná obhliadka, rýchle termíny, záruka na montáž.'],
                 'hero_title' => ['label' => 'Hero – nadpis (HTML povolené, napr. <span>)', 'type' => 'html', 'default' => 'Príjemný chlad vo vašom&nbsp;dome, <span>presne podľa vašich predstáv</span>'],
                 'hero_lead' => ['label' => 'Hero – text pod nadpisom', 'type' => 'textarea', 'default' => 'Montujeme, servisujeme a čistíme klimatizácie všetkých značiek. Od obhliadky po spustenie zvládneme montáž rodinného domu alebo bytu spravidla do pár dní.'],
@@ -90,10 +90,10 @@ function pageContentRegistry(): array
         'o-nas' => [
             'label' => 'O nás',
             'blocks' => [
-                'seo_title' => ['label' => 'SEO – titulok stránky', 'type' => 'text', 'default' => 'O nás – Klimatizácie Turiec'],
+                'seo_title' => ['label' => 'SEO – titulok stránky', 'type' => 'text', 'default' => 'O nás – Matrotech'],
                 'seo_description' => ['label' => 'SEO – meta popis', 'type' => 'textarea', 'default' => 'Sme lokálny tím zameraný na montáž a servis klimatizácií v Turci. Poznáme miestne domy, byty aj firmy a robíme prácu, za ktorou si stojíme.'],
                 'hero_title' => ['label' => 'Hero – nadpis', 'type' => 'text', 'default' => 'Robíme montáže, ktoré chceme mať aj vo vlastnom dome'],
-                'hero_lead' => ['label' => 'Hero – text', 'type' => 'textarea', 'default' => 'Klimatizácie Turiec je tím technikov zameraný výhradne na montáž, servis a čistenie klimatizácií v regióne Turiec. Pracujeme poctivo, bez zbytočného naťahovania termínov a s dôrazom na detail, ktorý sa oplatí až o pár rokov.'],
+                'hero_lead' => ['label' => 'Hero – text', 'type' => 'textarea', 'default' => 'Matrotech je tím technikov zameraný výhradne na montáž, servis a čistenie klimatizácií v regióne Turiec. Pracujeme poctivo, bez zbytočného naťahovania termínov a s dôrazom na detail, ktorý sa oplatí až o pár rokov.'],
                 'story_kicker' => ['label' => 'Príbeh – nadpis kategórie', 'type' => 'text', 'default' => 'Náš príbeh'],
                 'story_title' => ['label' => 'Príbeh – hlavný nadpis', 'type' => 'text', 'default' => 'Od jednej montáže po stovky spokojných domácností'],
                 'story_p1' => ['label' => 'Príbeh – odsek 1', 'type' => 'textarea', 'default' => 'Začínali sme ako malý tím, ktorý montoval klimatizácie susedom a známym v Martine a Vrútkach. Dnes vďaka odporúčaniam pôsobíme v celom regióne Turiec – od Sučian po Turčianske Teplice – a za sebou máme stovky zrealizovaných montáží v rodinných domoch, bytoch aj menších prevádzkach.'],
@@ -119,7 +119,7 @@ function pageContentRegistry(): array
         'sluzby' => [
             'label' => 'Služby',
             'blocks' => [
-                'seo_title' => ['label' => 'SEO – titulok stránky', 'type' => 'text', 'default' => 'Služby – montáž, servis a čistenie klimatizácií | Klimatizácie Turiec'],
+                'seo_title' => ['label' => 'SEO – titulok stránky', 'type' => 'text', 'default' => 'Služby – montáž, servis a čistenie klimatizácií | Matrotech'],
                 'seo_description' => ['label' => 'SEO – meta popis', 'type' => 'textarea', 'default' => 'Montáž klimatizácií, servis, čistenie, diagnostika a doplnenie chladiva. Poradenstvo pri výbere vhodnej klimatizácie pre dom, byt aj prevádzku.'],
                 'hero_title' => ['label' => 'Hero – nadpis', 'type' => 'text', 'default' => 'Všetko okolo klimatizácie na jednom mieste'],
                 'hero_lead' => ['label' => 'Hero – text', 'type' => 'textarea', 'default' => 'Od výberu vhodného typu jednotky, cez odbornú montáž, až po pravidelný servis a čistenie. Pracujeme so všetkými bežnými značkami klimatizácií.'],
@@ -154,7 +154,7 @@ function pageContentRegistry(): array
         'kalkulacka' => [
             'label' => 'Kalkulačka (texty)',
             'blocks' => [
-                'seo_title' => ['label' => 'SEO – titulok stránky', 'type' => 'text', 'default' => 'Kalkulačka výkonu klimatizácie – Klimatizácie Turiec'],
+                'seo_title' => ['label' => 'SEO – titulok stránky', 'type' => 'text', 'default' => 'Kalkulačka výkonu klimatizácie – Matrotech'],
                 'seo_description' => ['label' => 'SEO – meta popis', 'type' => 'textarea', 'default' => 'Zistite orientačný výkon klimatizácie podľa plochy a typu miestnosti. Rýchly odhad zadarmo, presný návrh pripravíme pri bezplatnej obhliadke.'],
                 'hero_title' => ['label' => 'Hero – nadpis', 'type' => 'text', 'default' => 'Kalkulačka výkonu klimatizácie'],
                 'hero_lead' => ['label' => 'Hero – text', 'type' => 'textarea', 'default' => 'Zadajte parametre miestnosti a hneď uvidíte orientačný výkon jednotky aj odhadovanú cenu montáže. Presný návrh pripravíme zadarmo priamo na mieste.'],
@@ -167,7 +167,7 @@ function pageContentRegistry(): array
         'kontakt' => [
             'label' => 'Kontakt',
             'blocks' => [
-                'seo_title' => ['label' => 'SEO – titulok stránky', 'type' => 'text', 'default' => 'Kontakt – Klimatizácie Turiec'],
+                'seo_title' => ['label' => 'SEO – titulok stránky', 'type' => 'text', 'default' => 'Kontakt – Matrotech'],
                 'seo_description' => ['label' => 'SEO – meta popis', 'type' => 'textarea', 'default' => 'Napíšte nám alebo zavolajte – radi vám pripravíme nezáväznú cenovú ponuku na montáž klimatizácie v regióne Turiec.'],
                 'hero_title' => ['label' => 'Hero – nadpis', 'type' => 'text', 'default' => 'Poďme naplánovať vašu klimatizáciu'],
                 'hero_lead' => ['label' => 'Hero – text', 'type' => 'textarea', 'default' => 'Napíšte nám pár slov o tom, čo potrebujete, alebo rovno zavolajte. Ozveme sa spravidla do 24 hodín s nezáväznou ponukou.'],
@@ -179,7 +179,7 @@ function pageContentRegistry(): array
         'realizacie' => [
             'label' => 'Realizácie',
             'blocks' => [
-                'seo_title' => ['label' => 'SEO – titulok stránky', 'type' => 'text', 'default' => 'Realizácie – galéria montáží klimatizácií | Klimatizácie Turiec'],
+                'seo_title' => ['label' => 'SEO – titulok stránky', 'type' => 'text', 'default' => 'Realizácie – galéria montáží klimatizácií | Matrotech'],
                 'seo_description' => ['label' => 'SEO – meta popis', 'type' => 'textarea', 'default' => 'Pozrite si vybrané realizácie montáží klimatizácií v rodinných domoch, bytoch aj pri exteriérových priestoroch v regióne Turiec.'],
                 'hero_title' => ['label' => 'Hero – nadpis', 'type' => 'text', 'default' => 'Montáže, na ktoré sme hrdí'],
                 'hero_lead' => ['label' => 'Hero – text', 'type' => 'textarea', 'default' => 'Výber z realizovaných montáží v rodinných domoch, bytoch aj pri exteriérových priestoroch v Turci. Kliknutím na fotografiu si ju zobrazíte v plnej veľkosti.'],
@@ -188,8 +188,8 @@ function pageContentRegistry(): array
         'gdpr' => [
             'label' => 'Ochrana osobných údajov',
             'blocks' => [
-                'seo_title' => ['label' => 'SEO – titulok stránky', 'type' => 'text', 'default' => 'Ochrana osobných údajov a cookies – Klimatizácie Turiec'],
-                'seo_description' => ['label' => 'SEO – meta popis', 'type' => 'textarea', 'default' => 'Informácie o spracúvaní osobných údajov a používaní cookies na webe Klimatizácie Turiec.'],
+                'seo_title' => ['label' => 'SEO – titulok stránky', 'type' => 'text', 'default' => 'Ochrana osobných údajov a cookies – Matrotech'],
+                'seo_description' => ['label' => 'SEO – meta popis', 'type' => 'textarea', 'default' => 'Informácie o spracúvaní osobných údajov a používaní cookies na webe Matrotech.'],
                 'hero_title' => ['label' => 'Hero – nadpis', 'type' => 'text', 'default' => 'Ochrana osobných údajov a cookies'],
                 'hero_lead' => ['label' => 'Hero – text', 'type' => 'textarea', 'default' => 'Vysvetlenie, aké osobné údaje spracúvame, prečo a ako používame cookies na tomto webe.'],
                 'body_html' => ['label' => 'Hlavný text stránky (HTML povolené)', 'type' => 'html', 'default' => <<<HTML
@@ -315,7 +315,7 @@ function pageContentRow(string $page): array
                 $values[$row['block_key']] = $row['content_value'];
             }
         } catch (PDOException $e) {
-            error_log('[klimaturiec] Chyba pri čítaní page_content: ' . $e->getMessage());
+            error_log('[matrotech] Chyba pri čítaní page_content: ' . $e->getMessage());
         }
     }
 
@@ -362,7 +362,7 @@ function setting(string $key, string $default = ''): string
                     $cache[$row['setting_key']] = $row['setting_value'];
                 }
             } catch (PDOException $e) {
-                error_log('[klimaturiec] Chyba pri čítaní site_settings: ' . $e->getMessage());
+                error_log('[matrotech] Chyba pri čítaní site_settings: ' . $e->getMessage());
             }
         }
     }
@@ -395,7 +395,7 @@ function calcSettings(): array
                 }
             }
         } catch (PDOException $e) {
-            error_log('[klimaturiec] Chyba pri čítaní calculator_settings: ' . $e->getMessage());
+            error_log('[matrotech] Chyba pri čítaní calculator_settings: ' . $e->getMessage());
         }
     }
 
@@ -435,7 +435,7 @@ function galleryItems(): array
                 return $rows;
             }
         } catch (PDOException $e) {
-            error_log('[klimaturiec] Chyba pri čítaní gallery_images: ' . $e->getMessage());
+            error_log('[matrotech] Chyba pri čítaní gallery_images: ' . $e->getMessage());
         }
     }
     return galleryItemsDefault();
@@ -467,7 +467,7 @@ function brandList(): array
                 return $rows;
             }
         } catch (PDOException $e) {
-            error_log('[klimaturiec] Chyba pri čítaní brands: ' . $e->getMessage());
+            error_log('[matrotech] Chyba pri čítaní brands: ' . $e->getMessage());
         }
     }
     return brandListDefault();
@@ -489,7 +489,7 @@ function serviceTowns(): array
                 return $rows;
             }
         } catch (PDOException $e) {
-            error_log('[klimaturiec] Chyba pri čítaní service_towns: ' . $e->getMessage());
+            error_log('[matrotech] Chyba pri čítaní service_towns: ' . $e->getMessage());
         }
     }
     return serviceTownsDefault();

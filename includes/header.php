@@ -11,7 +11,6 @@ declare(strict_types=1);
 
 require_once __DIR__ . '/config.php';
 require_once __DIR__ . '/icons.php';
-require_once __DIR__ . '/logo.php';
 
 $activePage = $activePage ?? '';
 $pageTitle = $pageTitle ?? SITE_NAME . ' – Montáž a servis klimatizácií v Turci';

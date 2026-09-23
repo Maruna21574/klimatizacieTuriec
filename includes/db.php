@@ -45,7 +45,7 @@ function db(): ?PDO
         return $pdo;
     } catch (PDOException $e) {
         $failed = true;
-        error_log('[klimaturiec] DB pripojenie zlyhalo: ' . $e->getMessage());
+        error_log('[matrotech] DB pripojenie zlyhalo: ' . $e->getMessage());
         return null;
     }
 }

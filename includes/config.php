@@ -1,17 +1,17 @@
 <?php
 /**
- * Globálna konfigurácia webu Klimatizácie Turiec.
+ * Globálna konfigurácia webu Matrotech.
  * Načíta sa na začiatku každej stránky.
  */
 
 declare(strict_types=1);
 
 // --- Firemné údaje ---------------------------------------------------
-define('SITE_NAME', 'Klimatizácie Turiec');
-define('SITE_FULLNAME', 'Klimatizácie Turiec');
+define('SITE_NAME', 'Matrotech');
+define('SITE_FULLNAME', 'Matrotech');
 define('SITE_CLAIM', 'Montáž a servis klimatizácií');
 define('SITE_REGION', 'Turiec a okolie');
-define('SITE_URL', (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] !== 'off' ? 'https://' : 'http://') . ($_SERVER['HTTP_HOST'] ?? 'klimaturiec.sk'));
+define('SITE_URL', (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] !== 'off' ? 'https://' : 'http://') . ($_SERVER['HTTP_HOST'] ?? 'matrotech.sk'));
 
 define('PHONE_DISPLAY', '0907 119 861');
 define('PHONE_TEL', '+421907119861');

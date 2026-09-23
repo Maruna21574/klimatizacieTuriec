@@ -25,13 +25,13 @@ $flash = getFlash();
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="robots" content="noindex, nofollow">
-<title><?= e($adminTitle) ?> – Administrácia Klimatizácie Turiec</title>
+<title><?= e($adminTitle) ?> – Administrácia Matrotech</title>
 <link rel="stylesheet" href="assets/admin.css?v=<?= (int) @filemtime(__DIR__ . '/../assets/admin.css') ?>">
 </head>
 <body>
 <div class="admin-shell">
     <header class="admin-topbar">
-        <div class="admin-topbar__brand">Klimatizácie Turiec <span>· administrácia</span></div>
+        <div class="admin-topbar__brand">Matrotech <span>· administrácia</span></div>
         <nav class="admin-topbar__nav">
             <?php foreach ($adminNav as $href => $label): ?>
             <a href="<?= e($href) ?>" class="<?= $currentScript === $href ? 'is-active' : '' ?>"><?= e($label) ?></a>

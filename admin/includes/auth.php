@@ -10,7 +10,7 @@ require_once __DIR__ . '/../../includes/db.php';
 function adminSessionStart(): void
 {
     if (session_status() === PHP_SESSION_NONE) {
-        session_name('klimaturiec_admin');
+        session_name('matrotech_admin');
         session_set_cookie_params([
             'lifetime' => 0,
             'path' => '/',
