@@ -3,26 +3,37 @@ declare(strict_types=1);
 
 require_once __DIR__ . '/includes/config.php';
 require_once __DIR__ . '/includes/mail-template.php';
+require_once __DIR__ . '/includes/antispam.php';
 
 if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
     header('Location: kontakt');
     exit;
 }
 
-// Honeypot proti spamu — skryté pole, ktoré bot pravdepodobne vyplní
-if (!empty($_POST['website'])) {
+// Ochrana proti spamu: honeypot pole + podpísaná časová pečiatka (bot
+// odošle formulár prakticky okamžite, alebo vôbec nenačíta stránku s
+// aktuálnym podpisom). Bota o odhalení nemá zmysel informovať, preto
+// predstierame úspech rovnako, ako keby správu naozaj odoslal.
+$isBotLike = !empty($_POST['website']) || !formTimestampValid((string) ($_POST['ts'] ?? ''));
+if ($isBotLike) {
     header('Location: kontakt?odoslane=1');
     exit;
 }
 
-$meno = trim((string) ($_POST['meno'] ?? ''));
-$email = trim((string) ($_POST['email'] ?? ''));
-$telefon = trim((string) ($_POST['telefon'] ?? ''));
-$mesto = trim((string) ($_POST['mesto'] ?? ''));
-$sprava = trim((string) ($_POST['sprava'] ?? ''));
+$meno = mb_substr(trim((string) ($_POST['meno'] ?? '')), 0, 150);
+$email = mb_substr(trim((string) ($_POST['email'] ?? '')), 0, 190);
+$telefon = mb_substr(trim((string) ($_POST['telefon'] ?? '')), 0, 40);
+$mesto = mb_substr(trim((string) ($_POST['mesto'] ?? '')), 0, 150);
+$sprava = mb_substr(trim((string) ($_POST['sprava'] ?? '')), 0, 4000);
 
 if ($meno === '' || $sprava === '' || !filter_var($email, FILTER_VALIDATE_EMAIL)) {
     header('Location: kontakt?chyba=1');
+    exit;
+}
+
+// Klasický spam vzor — viacero odkazov v správe. Opäť predstierame úspech.
+if (looksLikeLinkSpam($sprava) || looksLikeLinkSpam($meno)) {
+    header('Location: kontakt?odoslane=1');
     exit;
 }
 

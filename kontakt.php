@@ -2,6 +2,7 @@
 declare(strict_types=1);
 
 require_once __DIR__ . '/includes/config.php';
+require_once __DIR__ . '/includes/antispam.php';
 
 $activePage = 'kontakt';
 $pageTitle = cms('kontakt', 'seo_title');
@@ -86,6 +87,7 @@ $formError = isset($_GET['chyba']) && $_GET['chyba'] === '1';
                     <textarea id="sprava" name="sprava" rows="5" required placeholder="Popíšte nám, o aký priestor ide a čo potrebujete..."></textarea>
                 </div>
                 <input type="text" name="website" class="hp-field" tabindex="-1" autocomplete="off" aria-hidden="true">
+                <?= formTimestampField() ?>
                 <button type="submit" class="btn btn--accent btn--lg btn--block"><?= icon('arrow-right') ?> Odoslať dopyt</button>
                 <p class="contact-form__note"><?= cms('kontakt', 'form_note') ?></p>
             </form>

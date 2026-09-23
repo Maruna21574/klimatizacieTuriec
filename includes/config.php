@@ -22,6 +22,10 @@ define('INSTAGRAM_URL', '');
 define('GOOGLE_REVIEWS_URL', '');
 define('GOOGLE_MAPS_EMBED', 'https://www.google.com/maps?q=Martin,Slovensko&output=embed');
 
+// Tajný kľúč na podpisovanie časovej pečiatky formulára (ochrana proti spamu).
+// Nie je to prihlasovacie heslo, len znemožňuje botom podvrhnúť starší čas.
+define('FORM_SECRET', '419204e36dc44d139335e4f7437d70dd201faef63a71300c');
+
 // Obce a mestá v regióne Turiec, kde firma pôsobí
 define('SERVICE_TOWNS', ['Martin', 'Vrútky', 'Sučany', 'Turčianske Teplice', 'Kláštor pod Znievom', 'Mošovce', 'Blatnica', 'Necpaly', 'Diaková', 'Belá-Dulice']);
 
