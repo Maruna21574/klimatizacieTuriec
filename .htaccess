@@ -1,11 +1,22 @@
 DirectoryIndex index.php
 
+# Poznámka: presmerovanie HTTP->HTTPS cez mod_rewrite tu nefunguje spoľahlivo
+# kvôli proxy hostingu (spôsobuje redirect loop na "/"). SSL certifikát je
+# platný a funguje priamo, presmerovanie treba riešiť v administrácii hostingu
+# (vynútenie HTTPS), nie v .htaccess.
+
 <IfModule mod_rewrite.c>
     RewriteEngine On
 
-    # Presmerovanie na HTTPS a bez www (uprav podľa reálnej domény po nasadení)
-    RewriteCond %{HTTPS} off
-    RewriteRule ^ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+    # /stranka.php -> presmerovanie (301) na /stranka, aby v adrese nebolo .php
+    RewriteCond %{REQUEST_FILENAME} -f
+    RewriteRule ^(.+)\.php$ /$1 [R=301,L]
+
+    # /stranka -> interne dorieši ako stranka.php (bez zmeny adresy v prehliadači)
+    RewriteCond %{REQUEST_FILENAME} !-f
+    RewriteCond %{REQUEST_FILENAME} !-d
+    RewriteCond %{REQUEST_FILENAME}.php -f
+    RewriteRule ^(.*)$ $1.php [L]
 </IfModule>
 
 ErrorDocument 404 /404.php
@@ -25,6 +36,6 @@ ErrorDocument 404 /404.php
     ExpiresByType application/javascript "access plus 1 week"
 </IfModule>
 
-<FilesMatch "\.(env|log|md|scss)$">
+<FilesMatch "\.(env|log|md|scss|sql)$">
     Require all denied
 </FilesMatch>

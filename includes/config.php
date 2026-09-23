@@ -15,8 +15,7 @@ define('SITE_URL', (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] !== 'off' ? 'h
 
 define('PHONE_DISPLAY', '0907 119 861');
 define('PHONE_TEL', '+421907119861');
-// TODO: uprav na reálny e-mail a doménu firmy pred nasadením na hosting
-define('EMAIL_ADDR', 'info@klimaturiec.sk');
+define('EMAIL_ADDR', 'matrotech@matrotech.sk');
 
 define('FACEBOOK_URL', '');
 define('INSTAGRAM_URL', '');

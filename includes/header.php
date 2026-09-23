@@ -18,12 +18,12 @@ $pageTitle = $pageTitle ?? SITE_NAME . ' – Montáž a servis klimatizácií v 
 $pageDescription = $pageDescription ?? 'Profesionálna montáž, servis a čistenie klimatizácií v Martine, Vrútkach a celom Turci. Všetky značky, rýchle termíny, férové ceny.';
 
 $navItems = [
-    'domov' => ['label' => 'Domov', 'href' => 'index.php'],
-    'o-nas' => ['label' => 'O nás', 'href' => 'o-nas.php'],
-    'sluzby' => ['label' => 'Služby', 'href' => 'sluzby.php'],
-    'kalkulacka' => ['label' => 'Kalkulačka', 'href' => 'kalkulacka.php'],
-    'realizacie' => ['label' => 'Realizácie', 'href' => 'realizacie.php'],
-    'kontakt' => ['label' => 'Kontakt', 'href' => 'kontakt.php'],
+    'domov' => ['label' => 'Domov', 'href' => '/'],
+    'o-nas' => ['label' => 'O nás', 'href' => 'o-nas'],
+    'sluzby' => ['label' => 'Služby', 'href' => 'sluzby'],
+    'kalkulacka' => ['label' => 'Kalkulačka', 'href' => 'kalkulacka'],
+    'realizacie' => ['label' => 'Realizácie', 'href' => 'realizacie'],
+    'kontakt' => ['label' => 'Kontakt', 'href' => 'kontakt'],
 ];
 ?>
 <!DOCTYPE html>
@@ -35,7 +35,8 @@ $navItems = [
 <title><?= e($pageTitle) ?></title>
 <meta name="description" content="<?= e($pageDescription) ?>">
 <meta name="theme-color" content="#0a2650">
-<link rel="canonical" href="<?= e(SITE_URL . '/' . basename($_SERVER['PHP_SELF'])) ?>">
+<?php $canonicalSlug = basename($_SERVER['PHP_SELF'], '.php'); ?>
+<link rel="canonical" href="<?= e(SITE_URL . '/' . ($canonicalSlug === 'index' ? '' : $canonicalSlug)) ?>">
 
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="<?= e(SITE_NAME) ?>">
@@ -86,7 +87,7 @@ $navItems = [
 
 <header class="site-header" id="site-header">
     <div class="container">
-        <a href="index.php" class="brand" aria-label="<?= e(SITE_NAME) ?> – domov">
+        <a href="/" class="brand" aria-label="<?= e(SITE_NAME) ?> – domov">
             <img src="<?= asset('assets/img/logo-color.png') ?>" alt="<?= e(SITE_NAME) ?>" class="brand-logo-img" width="831" height="440">
         </a>
 
@@ -99,7 +100,7 @@ $navItems = [
         </nav>
 
         <div class="header-actions">
-            <a href="kontakt.php" class="btn btn--accent btn--sm"><?= icon('arrow-right') ?> Nezáväzná ponuka</a>
+            <a href="kontakt" class="btn btn--accent btn--sm"><?= icon('arrow-right') ?> Nezáväzná ponuka</a>
             <button type="button" class="nav-toggle" id="nav-open" aria-label="Otvoriť menu" aria-expanded="false" aria-controls="mobile-nav">
                 <?= icon('menu') ?>
             </button>
@@ -123,7 +124,7 @@ $navItems = [
         </ul>
         <div class="mobile-nav__foot">
             <a href="tel:<?= e(setting('phone_tel', PHONE_TEL)) ?>" class="btn btn--outline btn--block"><?= icon('phone') ?> <?= e(setting('phone_display', PHONE_DISPLAY)) ?></a>
-            <a href="kontakt.php" class="btn btn--accent btn--block"><?= icon('arrow-right') ?> Nezáväzná ponuka</a>
+            <a href="kontakt" class="btn btn--accent btn--block"><?= icon('arrow-right') ?> Nezáväzná ponuka</a>
         </div>
     </div>
 </div>

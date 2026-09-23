@@ -18,8 +18,8 @@ require_once __DIR__ . '/includes/header.php';
         <h1><?= cms('stranka-404', 'title') ?></h1>
         <p><?= cms('stranka-404', 'desc') ?></p>
         <div class="hero__actions">
-            <a href="index.php" class="btn btn--accent btn--lg"><?= icon('arrow-right') ?> Späť na domovskú stránku</a>
-            <a href="kontakt.php" class="btn btn--outline btn--lg"><?= icon('mail') ?> Kontaktovať nás</a>
+            <a href="/" class="btn btn--accent btn--lg"><?= icon('arrow-right') ?> Späť na domovskú stránku</a>
+            <a href="kontakt" class="btn btn--outline btn--lg"><?= icon('mail') ?> Kontaktovať nás</a>
         </div>
     </div>
 </section>

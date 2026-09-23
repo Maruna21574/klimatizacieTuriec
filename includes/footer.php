@@ -9,7 +9,7 @@
             </div>
             <div class="cta-band__actions">
                 <a href="tel:<?= e(setting('phone_tel', PHONE_TEL)) ?>" class="btn btn--accent"><?= icon('phone') ?> <?= e(setting('phone_display', PHONE_DISPLAY)) ?></a>
-                <a href="kontakt.php" class="btn btn--outline-light"><?= icon('mail') ?> Napísať správu</a>
+                <a href="kontakt" class="btn btn--outline-light"><?= icon('mail') ?> Napísať správu</a>
             </div>
         </div>
     </div>
@@ -34,12 +34,12 @@
             <div>
                 <h4>Navigácia</h4>
                 <nav class="site-footer__links" aria-label="Odkazy v pätičke">
-                    <a href="index.php">Domov</a>
-                    <a href="o-nas.php">O nás</a>
-                    <a href="sluzby.php">Služby</a>
-                    <a href="realizacie.php">Realizácie</a>
-                    <a href="kontakt.php">Kontakt</a>
-                    <a href="ochrana-osobnych-udajov.php">Ochrana osobných údajov</a>
+                    <a href="/">Domov</a>
+                    <a href="o-nas">O nás</a>
+                    <a href="sluzby">Služby</a>
+                    <a href="realizacie">Realizácie</a>
+                    <a href="kontakt">Kontakt</a>
+                    <a href="ochrana-osobnych-udajov">Ochrana osobných údajov</a>
                 </nav>
             </div>
 
@@ -75,7 +75,7 @@
             <p><?= cms('global', 'cookie_text') ?></p>
         </div>
         <div class="cookie-banner__actions">
-            <a href="ochrana-osobnych-udajov.php" class="cookie-banner__link">Viac informácií</a>
+            <a href="ochrana-osobnych-udajov" class="cookie-banner__link">Viac informácií</a>
             <button type="button" class="btn btn--outline-light btn--sm" id="cookie-reject">Iba nevyhnutné</button>
             <button type="button" class="btn btn--accent btn--sm" id="cookie-accept">Prijať všetky</button>
         </div>

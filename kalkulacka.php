@@ -75,7 +75,7 @@ require_once __DIR__ . '/includes/header.php';
                 <li><?= icon('check') ?> <?= cms('kalkulacka', 'check_3') ?></li>
             </ul>
             <div class="hero__actions">
-                <a href="kontakt.php" class="btn btn--accent btn--lg"><?= icon('arrow-right') ?> Nezáväzná cenová ponuka</a>
+                <a href="kontakt" class="btn btn--accent btn--lg"><?= icon('arrow-right') ?> Nezáväzná cenová ponuka</a>
                 <a href="tel:<?= e(setting('phone_tel', PHONE_TEL)) ?>" class="btn btn--outline-light btn--lg"><?= icon('phone') ?> <?= e(setting('phone_display', PHONE_DISPLAY)) ?></a>
             </div>
             <p class="calc-disclaimer"><?= cms('kalkulacka', 'disclaimer') ?></p>

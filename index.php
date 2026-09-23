@@ -19,7 +19,7 @@ require_once __DIR__ . '/includes/header.php';
             <h1><?= cms('index', 'hero_title') ?></h1>
             <p class="hero__lead"><?= cms('index', 'hero_lead') ?></p>
             <div class="hero__actions">
-                <a href="kontakt.php" class="btn btn--accent btn--lg"><?= icon('arrow-right') ?> Nezáväzná cenová ponuka</a>
+                <a href="kontakt" class="btn btn--accent btn--lg"><?= icon('arrow-right') ?> Nezáväzná cenová ponuka</a>
                 <a href="tel:<?= e(setting('phone_tel', PHONE_TEL)) ?>" class="btn btn--outline-light btn--lg"><?= icon('phone') ?> <?= e(setting('phone_display', PHONE_DISPLAY)) ?></a>
             </div>
             <ul class="hero__points">
@@ -62,25 +62,25 @@ require_once __DIR__ . '/includes/header.php';
                 <span class="service-card__icon"><?= icon('snowflake') ?></span>
                 <h3><?= cms('index', 'service_1_title') ?></h3>
                 <p><?= cms('index', 'service_1_desc') ?></p>
-                <a href="sluzby.php#montaz">Viac o montáži <?= icon('arrow-right') ?></a>
+                <a href="sluzby#montaz">Viac o montáži <?= icon('arrow-right') ?></a>
             </article>
             <article class="service-card reveal">
                 <span class="service-card__icon"><?= icon('tool') ?></span>
                 <h3><?= cms('index', 'service_2_title') ?></h3>
                 <p><?= cms('index', 'service_2_desc') ?></p>
-                <a href="sluzby.php#servis">Viac o servise <?= icon('arrow-right') ?></a>
+                <a href="sluzby#servis">Viac o servise <?= icon('arrow-right') ?></a>
             </article>
             <article class="service-card reveal">
                 <span class="service-card__icon"><?= icon('gauge') ?></span>
                 <h3><?= cms('index', 'service_3_title') ?></h3>
                 <p><?= cms('index', 'service_3_desc') ?></p>
-                <a href="sluzby.php#diagnostika">Viac o diagnostike <?= icon('arrow-right') ?></a>
+                <a href="sluzby#diagnostika">Viac o diagnostike <?= icon('arrow-right') ?></a>
             </article>
             <article class="service-card reveal">
                 <span class="service-card__icon"><?= icon('leaf') ?></span>
                 <h3><?= cms('index', 'service_4_title') ?></h3>
                 <p><?= cms('index', 'service_4_desc') ?></p>
-                <a href="sluzby.php#poradenstvo">Viac o poradenstve <?= icon('arrow-right') ?></a>
+                <a href="sluzby#poradenstvo">Viac o poradenstve <?= icon('arrow-right') ?></a>
             </article>
         </div>
     </div>
@@ -183,11 +183,11 @@ require_once __DIR__ . '/includes/header.php';
                 <span class="section__kicker"><?= cms('index', 'gallery_kicker') ?></span>
                 <h2><?= cms('index', 'gallery_title') ?></h2>
             </div>
-            <a href="realizacie.php" class="btn btn--outline">Celá galéria <?= icon('arrow-right') ?></a>
+            <a href="realizacie" class="btn btn--outline">Celá galéria <?= icon('arrow-right') ?></a>
         </div>
         <div class="gallery-preview">
             <?php foreach (array_slice(galleryItems(), 0, 4) as $item): ?>
-            <a class="gallery-preview__item reveal" href="realizacie.php">
+            <a class="gallery-preview__item reveal" href="realizacie">
                 <img src="assets/img/gallery/<?= e($item['file']) ?>" alt="<?= e($item['title']) ?>" loading="lazy" width="400" height="300">
                 <span class="gallery-preview__label"><?= e($item['categoryLabel']) ?></span>
             </a>
