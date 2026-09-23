@@ -33,6 +33,8 @@ $navItems = [
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title><?= e($pageTitle) ?></title>
 <meta name="description" content="<?= e($pageDescription) ?>">
+<meta name="keywords" content="klimatizácie Martin, montáž klimatizácie, servis klimatizácie, čistenie klimatizácie, oprava klimatizácie, klimatizácia Turiec, klimatizácia Vrútky, klimatizácia Turčianske Teplice, split klimatizácia, multisplit klimatizácia, <?= e(SITE_NAME) ?>">
+<meta name="robots" content="index, follow">
 <meta name="theme-color" content="#0a2650">
 <?php $canonicalSlug = basename($_SERVER['PHP_SELF'], '.php'); ?>
 <link rel="canonical" href="<?= e(SITE_URL . '/' . ($canonicalSlug === 'index' ? '' : $canonicalSlug)) ?>">
@@ -54,22 +56,33 @@ $navItems = [
 
 <link rel="stylesheet" href="<?= asset('assets/css/style.css') ?>">
 
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "HVACBusiness",
-  "name": "<?= e(SITE_NAME) ?>",
-  "telephone": "<?= e(setting('phone_tel', PHONE_TEL)) ?>",
-  "email": "<?= e(setting('email', EMAIL_ADDR)) ?>",
-  "areaServed": "<?= e(setting('region', SITE_REGION)) ?>",
-  "address": {
-    "@type": "PostalAddress",
-    "addressRegion": "Turiec",
-    "addressCountry": "SK"
-  },
-  "url": "<?= e(SITE_URL) ?>"
+<?php
+$schema = [
+    '@context' => 'https://schema.org',
+    '@type' => 'HVACBusiness',
+    'name' => SITE_NAME,
+    'image' => SITE_URL . '/assets/img/logo-color.png',
+    'logo' => SITE_URL . '/assets/img/logo-color.png',
+    'telephone' => setting('phone_tel', PHONE_TEL),
+    'email' => setting('email', EMAIL_ADDR),
+    'areaServed' => setting('region', SITE_REGION),
+    'address' => [
+        '@type' => 'PostalAddress',
+        'addressRegion' => 'Turiec',
+        'addressCountry' => 'SK',
+    ],
+    'url' => SITE_URL,
+];
+$sameAs = array_values(array_filter([
+    setting('facebook_url', FACEBOOK_URL),
+    setting('instagram_url', INSTAGRAM_URL),
+    setting('google_reviews_url', GOOGLE_REVIEWS_URL),
+]));
+if ($sameAs !== []) {
+    $schema['sameAs'] = $sameAs;
 }
-</script>
+?>
+<script type="application/ld+json"><?= json_encode($schema, JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES) ?></script>
 </head>
 <body>
 <a class="skip-link" href="#hlavny-obsah">Preskočiť na obsah</a>

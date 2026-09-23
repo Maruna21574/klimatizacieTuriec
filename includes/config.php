@@ -11,7 +11,11 @@ define('SITE_NAME', 'Matrotech');
 define('SITE_FULLNAME', 'Matrotech');
 define('SITE_CLAIM', 'Montáž a servis klimatizácií');
 define('SITE_REGION', 'Turiec a okolie');
-define('SITE_URL', (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] !== 'off' ? 'https://' : 'http://') . ($_SERVER['HTTP_HOST'] ?? 'matrotech.sk'));
+// Pevná preferovaná doména - nesmie závisieť od toho, cez ktorú verziu
+// (matrotech.sk / www.matrotech.sk) niekto prišiel, inak Google vidí
+// canonical/og:url inak pri každom prístupe a považuje to za duplicitný
+// obsah namiesto jednej stránky.
+define('SITE_URL', 'https://www.matrotech.sk');
 
 define('PHONE_DISPLAY', '0907 119 861');
 define('PHONE_TEL', '+421907119861');
