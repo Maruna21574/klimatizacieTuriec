@@ -7,6 +7,51 @@ declare(strict_types=1);
 
 require_once __DIR__ . '/../../includes/db.php';
 
+// Ochrana proti skúšaniu hesiel (brute-force): po prekročení limitu
+// neúspešných pokusov z jednej IP adresy sa prihlásenie dočasne zablokuje.
+const ADMIN_LOGIN_MAX_ATTEMPTS = 8;
+const ADMIN_LOGIN_WINDOW_MINUTES = 15;
+
+function adminClientIp(): string
+{
+    return (string) ($_SERVER['REMOTE_ADDR'] ?? '0.0.0.0');
+}
+
+/** True, ak táto IP adresa v poslednom časovom okne prekročila limit neúspešných pokusov. */
+function isAdminLoginLocked(string $ip): bool
+{
+    $pdo = db();
+    if ($pdo === null) {
+        return false;
+    }
+    $stmt = $pdo->prepare(
+        'SELECT COUNT(*) FROM admin_login_attempts
+         WHERE ip_address = ? AND attempted_at > (NOW() - INTERVAL ' . ADMIN_LOGIN_WINDOW_MINUTES . ' MINUTE)'
+    );
+    $stmt->execute([$ip]);
+    return (int) $stmt->fetchColumn() >= ADMIN_LOGIN_MAX_ATTEMPTS;
+}
+
+function recordFailedAdminLogin(string $ip): void
+{
+    $pdo = db();
+    if ($pdo === null) {
+        return;
+    }
+    $pdo->prepare('INSERT INTO admin_login_attempts (ip_address) VALUES (?)')->execute([$ip]);
+    // Priebežné upratovanie starých záznamov, aby tabuľka nerástla donekonečna.
+    $pdo->exec('DELETE FROM admin_login_attempts WHERE attempted_at < (NOW() - INTERVAL 1 DAY)');
+}
+
+function clearAdminLoginAttempts(string $ip): void
+{
+    $pdo = db();
+    if ($pdo === null) {
+        return;
+    }
+    $pdo->prepare('DELETE FROM admin_login_attempts WHERE ip_address = ?')->execute([$ip]);
+}
+
 function adminSessionStart(): void
 {
     if (session_status() === PHP_SESSION_NONE) {
@@ -41,6 +86,13 @@ function requireAdminLogin(): void
 function attemptAdminLogin(string $username, string $password): bool
 {
     adminSessionStart();
+    $ip = adminClientIp();
+
+    if (isAdminLoginLocked($ip)) {
+        usleep(300000);
+        return false;
+    }
+
     $pdo = db();
     if ($pdo === null) {
         return false;
@@ -54,9 +106,11 @@ function attemptAdminLogin(string $username, string $password): bool
         session_regenerate_id(true);
         $_SESSION['admin_id'] = (int) $row['id'];
         $_SESSION['admin_username'] = $username;
+        clearAdminLoginAttempts($ip);
         return true;
     }
 
+    recordFailedAdminLogin($ip);
     // Malé oneskorenie proti hrubému hádaniu hesla.
     usleep(300000);
     return false;

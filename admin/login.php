@@ -19,12 +19,14 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $username = trim((string) ($_POST['username'] ?? ''));
     $password = (string) ($_POST['password'] ?? '');
 
-    if ($username !== '' && $password !== '' && attemptAdminLogin($username, $password)) {
+    if (isAdminLoginLocked(adminClientIp())) {
+        $error = 'Príliš veľa neúspešných pokusov o prihlásenie. Skúste to znova o pár minút.';
+    } elseif ($username !== '' && $password !== '' && attemptAdminLogin($username, $password)) {
         header('Location: index.php');
         exit;
+    } else {
+        $error = 'Nesprávne meno alebo heslo.';
     }
-
-    $error = 'Nesprávne meno alebo heslo.';
 }
 ?>
 <!DOCTYPE html>
